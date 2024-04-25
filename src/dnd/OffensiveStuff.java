@@ -1,23 +1,23 @@
 package dnd;
 
 public class OffensiveStuff {
-    private String attack;
+    private String type;
     private int attackStrength;
     private String name;
 
     public OffensiveStuff(String attack, int attackStrength, String name) {
-    this.attack=attack;
+    this.type=attack;
     this.attackStrength=attackStrength;
     this.name=name;
     }
 
 // Getters & Setters
     public String getAttack() {
-        return attack;
+        return type;
     }
 
     public void setAttack(String attack) {
-        this.attack = attack;
+        this.type = attack;
     }
 
     public int getAttackStrength() {
@@ -33,6 +33,11 @@ public class OffensiveStuff {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", type: " + type + ", Attack: " + attackStrength ;
     }
 }
 

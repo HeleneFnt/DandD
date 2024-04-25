@@ -89,13 +89,7 @@ public class Character {
 
     @Override // surcharge de la méthode tiString()
     public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", healthPoints=" + healthPoints +
-                ", attackStrength=" + attackStrength +
-                ", offensiveStuff='" + offensiveStuff + '\'' +
-                ", defensiveStuff='" + defensiveStuff + '\'' +
-                '}';
+        return "Name: " + name + ", HP: " + healthPoints + ", Attack: " + attackStrength +
+                ", Offensive Stuff: " + offensiveStuff + ", Defensive Stuff: " + defensiveStuff;
     }
 }

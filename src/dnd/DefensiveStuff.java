@@ -1,21 +1,21 @@
 package dnd;
 
 public class DefensiveStuff {
-    private String defense;
+    private String type;
     private int defenseValue;
     private String name;
 
     public DefensiveStuff(String defense, int defenseValue, String name) {
-        this.defense = defense;
+        this.type = defense;
         this.defenseValue = defenseValue;
         this.name = name;
     }
     // Getters & Setters
     public String getDefense() {
-        return defense;
+        return type;
     }
     public void setDefense(String defense) {
-        this.defense = defense;
+        this.type = defense;
     }
     public int getDefenseValue() {
         return defenseValue;
@@ -28,5 +28,10 @@ public class DefensiveStuff {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    @Override
+    public String toString() {
+        return "Name: " + name + ", type: " + type + ", Defense: " + defenseValue ;
+
     }
 }
