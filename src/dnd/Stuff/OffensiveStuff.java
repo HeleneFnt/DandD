@@ -1,4 +1,4 @@
-package dnd;
+package dnd.Stuff;
 
 public class OffensiveStuff {
     private String type;

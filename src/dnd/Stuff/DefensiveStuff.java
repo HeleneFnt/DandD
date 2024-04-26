@@ -1,4 +1,4 @@
-package dnd;
+package dnd.Stuff;
 
 public class DefensiveStuff {
     private String type;
