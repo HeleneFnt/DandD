@@ -11,32 +11,28 @@ public class Character {
     // Constructeur de personnages sans paramètres
     public Character() {
         this.name = "";
-        this.healthPoints = 0;
-        this.attackStrength = 0;
-        this.offensiveStuff = null;
-        this.defensiveStuff = null;
+        this.healthPoints = 10;
+        this.attackStrength = 10;
     }
 
     // Constructeur de personnages avec nom
     public Character(String name) {
+        this();
         this.name = name;
-        this.healthPoints = 0;
-        this.attackStrength = 0;
-        this.offensiveStuff = null;
-        this.defensiveStuff = null;
     }
 
     // Constructeur de personnages avec nom et type
     public Character(String name, String type) {
-        this.name = name;
+        this(name);
         this.type = type;
-        this.healthPoints = 0;
-        this.attackStrength = 0;
-        this.offensiveStuff = null;
-        this.defensiveStuff = null;
-
+        if (type.equals("warrior")) {
+            this.offensiveStuff = new String("Sword");
+            this.defensiveStuff = new String("Shield");
+        } else if (type.equals("mage")){
+            this.offensiveStuff = new String("Fireball");
+            this.defensiveStuff = new String("Potion");
     }
-
+}
     // Getters et Setters
     public String getName() {
         return name;
