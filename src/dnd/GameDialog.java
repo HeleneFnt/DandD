@@ -3,13 +3,12 @@ package dnd;
 import java.util.Scanner;
 
 public class GameDialog {
-    private final Scanner scanner = null;
+    private Scanner scanner;
 
     public GameDialog(Scanner scanner) {
         this.scanner = scanner;
     }
-    
-    GameDialog gameDialog = new GameDialog(scanner);
+
 
     public void notifyMovePosition(int currentPosition) {
         System.out.println("Your position: case " + currentPosition + " / 64");

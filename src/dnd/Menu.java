@@ -12,7 +12,7 @@ public class Menu {
     private final Color color = new Color();
     private final Color.Colors colors = color.new Colors();
     private String randomColor;
-    private GameDialog dialog = new GameDialog();
+    private GameDialog dialog = new GameDialog(scanner);
 
     public void startMenu() {
         randomColor = colors.randomColor();
