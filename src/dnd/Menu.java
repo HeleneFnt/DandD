@@ -23,11 +23,6 @@ public class Menu {
             switch (choice) {
                 case 1:
                     createCharacter();
-                    if (fictionalCharacter != null) {
-                        modifyCharacter();
-                    } else {
-                        System.out.println("No character created yet \uD83D\uDE15 ");
-                    }
                     break;
                 case 2:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B ");
@@ -74,7 +69,7 @@ public class Menu {
             switch (choice.toLowerCase()) {
                 case "y":
                     System.out.println("Starting the game...\uD83C\uDFB2");
-                    new Game().playTurn();
+                    new Game().playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
                     System.out.println("You can start the game later");
@@ -128,7 +123,7 @@ public class Menu {
                 case 3:
                     System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType()));
                     System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
-                    new Game().playTurn();
+                    new Game().playTurn(); // Commencer le jeu
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
