@@ -1,5 +1,3 @@
-import dnd.Color;
-import dnd.Game;
 import dnd.Menu;
 
 public class Main {

@@ -1,9 +1,13 @@
+// Game.java
 package dnd;
+
+import dnd.Personna.CharacterBeyondBoardException;
 
 import java.util.Scanner;
 
 public class Game {
     private int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
+    private final int FINAL_CASE = 64;
 
     public Game() {
         this.currentPosition = 1; // Départ du joueur à la case 1
@@ -13,17 +17,24 @@ public class Game {
     public void playTurn() {
         Scanner scanner = new Scanner(System.in);
 
-        while (currentPosition < 64) {
+        while (currentPosition < FINAL_CASE) {
             // Lance le dé
             int diceRoll = (int) (Math.random() * 6) + 1;
             // Met à jour la position actuelle du joueur en fonction du résultat du dé
             currentPosition += diceRoll;
 
+            // Vérifie si le joueur est hors du plateau
+            if (currentPosition > FINAL_CASE) {
+                try {
+                    throw new CharacterBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
+                } catch (CharacterBeyondBoardException e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
+            }
+
             // Affichage de la position du personnage
             System.out.println("Your position: case " + currentPosition + " / 64");
-
-//            // Affichage du plateau et de la position du personnage
-//            displayBoard(currentPosition);
 
             // Attente de l'entrée utilisateur pour lancer le dé
             System.out.println("Press Enter to roll the dice and move.");
@@ -44,29 +55,9 @@ public class Game {
             case 2:
                 // Quitter le jeu
                 System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
-                System.exit(0);
                 break;
             default:
                 System.out.println("Invalid choice! \uD83D\uDEAB");
         }
     }
-
-//    // Méthode pour afficher le plateau et la position du personnage
-//    private void displayBoard(int currentPosition) {
-//        // Affichage du plateau
-//        System.out.println("╔════════════════════════╗");
-//        for (int i = 0; i < 8; i++) {
-//            System.out.print("║");
-//            for (int j = 0; j < 8; j++) {
-//                int cellNumber = i * 8 + j + 1;
-//                if (cellNumber == currentPosition) {
-//                    System.out.print(" X "); // Position actuelle du personnage
-//                } else {
-//                    System.out.print(" - "); // Autres cases du plateau
-//                }
-//            }
-//            System.out.println("║");
-//        }
-//        System.out.println("╚════════════════════════╝");
-//    }
 }

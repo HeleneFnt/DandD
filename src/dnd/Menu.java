@@ -1,6 +1,9 @@
 package dnd;
 
 import dnd.Personna.Character;
+import dnd.Personna.Mage;
+import dnd.Personna.Warrior;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -19,7 +22,6 @@ public class Menu {
         while (true) {
             int choice = scanner.nextInt();
             scanner.nextLine();
-
             switch (choice) {
                 case 1:
                     createCharacter();
@@ -64,11 +66,13 @@ public class Menu {
             fictionalCharacter = new Character(name, type);
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
             System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
+            displayCharacterSpecifics(fictionalCharacter);
+
             System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Do you want to start the game now? 'y' for Yes or 'n' for No.");
             String choice = scanner.nextLine();
             switch (choice.toLowerCase()) {
                 case "y":
-                    System.out.println("Starting the game...\uD83C\uDFB2");
+                    System.out.println("Starting the game... First throw \uD83C\uDFB2");
                     new Game().playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
@@ -80,15 +84,29 @@ public class Menu {
 
             System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Do you want to modify your character \uD83D\uDD04 ? 'y' for Yes or 'n' for No.");
             String modifyChoice = scanner.nextLine();
-            if (modifyChoice.equalsIgnoreCase("y")) {
+            if (modifyChoice.equals("y")) {
                 modifyCharacter();
-            } else if (modifyChoice.equalsIgnoreCase("n")) {
+            } else if (modifyChoice.equals("n")) {
                 System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk \uD83D\uDEAA✨ " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType() + "!" + "The game is starting..."));
                 System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
                 break;
             } else {
                 System.out.println("Invalid choice! \uD83D\uDEAB ");
             }
+        }
+    }
+
+    private void displayCharacterSpecifics(Character character) {
+        if (character instanceof Mage) {
+            Mage mage = (Mage) character;
+            System.out.println("Mage Health Points: " + mage.getHealthPoints());
+            System.out.println("Mage Attack Strength: " + mage.getAttackStrength());
+        } else if (character instanceof Warrior) {
+            Warrior warrior = (Warrior) character;
+            System.out.println("Warrior Health Points: " + warrior.getHealthPoints());
+            System.out.println("Warrior Attack Strength: " + warrior.getAttackStrength());
+        } else {
+            System.out.println("The character is not a Mage or a Warrior.");
         }
     }
 
@@ -118,6 +136,7 @@ public class Menu {
                         fictionalCharacter.setType(newType);
                         System.out.println(colors.colored(randomColor, "Character type updated successfully! \uD83D\uDCAB "));
                         System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
+                        displayCharacterSpecifics(fictionalCharacter);
                     }
                     break;
                 case 3:

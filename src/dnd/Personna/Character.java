@@ -16,8 +16,11 @@ public class Character {
     // Constructeur de personnages sans paramètres
     public Character() {
         this.name = "";
-        this.healthPoints = 10;
-        this.attackStrength = 10;
+        this.healthPoints = 10; // Valeur par défaut
+        this.attackStrength = 10; // Valeur par défaut
+        this.type = "";
+        this.offensiveStuff = new OffensiveStuff("", 0, ""); // Initialisation par défaut
+        this.defensiveStuff = new DefensiveStuff("", 0, ""); // Initialisation par défaut
     }
 
     // Constructeur de personnages avec nom
@@ -31,11 +34,15 @@ public class Character {
         this(name);
         this.type = type;
         if (type.equals("warrior")) {
-            this.offensiveStuff = new OffensiveStuff("Sword", 10, "Sword");
-            this.defensiveStuff = new DefensiveStuff("Shield", 10, "Shield");
-        } else if (type.equals("mage")){
-            this.offensiveStuff = new OffensiveStuff("Fireball", 10, "Fireball");
-            this.defensiveStuff = new DefensiveStuff("Potion", 10, "Potion");
+            this.healthPoints = 8 + (int) (Math.random() * (11 - 8)); // Entre 8 et 10
+            this.attackStrength = 8 + (int) (Math.random() * (16 - 8)); // Entre 8 et 15
+            this.offensiveStuff = new OffensiveStuff("Weapon", 5, "Sword");
+            this.defensiveStuff = new DefensiveStuff("Protection", 10, "Shield");
+        } else if (type.equals("mage")) {
+            this.healthPoints = 3 + (int) (Math.random() * (7 - 3)); // Entre 3 et 6
+            this.attackStrength = 8 + (int) (Math.random() * (16 - 8)); // Entre 8 et 15
+            this.offensiveStuff = new OffensiveStuff("Spell", 15, "Fireball");
+            this.defensiveStuff = new DefensiveStuff("Potion", 8, "Philter");
         }
     }
 
@@ -60,18 +67,9 @@ public class Character {
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
     public int getAttackStrength() {
         return attackStrength;
     }
-
-    public void setAttackStrength(int attackStrength) {
-        this.attackStrength = attackStrength;
-    }
-
 
 
     @Override // surcharge de la méthode tiString()
