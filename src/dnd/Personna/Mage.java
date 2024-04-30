@@ -1,5 +1,8 @@
 package dnd.Personna;
 
+import dnd.Stuff.DefensiveStuff;
+import dnd.Stuff.OffensiveStuff;
+
 public class Mage extends Character {
     private int healthPoints;
     private int attackStrength;
@@ -9,6 +12,9 @@ public class Mage extends Character {
         super(name, "mage"); // Appel du constructeur de la classe mère avec le type "mage"
         this.healthPoints = healthPoints;
         this.attackStrength = attackStrength;
+
+        this.offensiveStuff = new OffensiveStuff("Spell", 15, "Fireball");
+        this.defensiveStuff = new DefensiveStuff("Potion", 8, "Philter");
     }
 
     // Getters et Setters pour les attributs spécifiques au mage
@@ -32,5 +38,10 @@ public class Mage extends Character {
     @Override
     public String toString() {
         return super.toString() + ", Health Points: " + healthPoints + ", Attack Strength: " + attackStrength;
+    }
+
+    @Override
+    public String hurler() {
+        return "Youhou";
     }
 }

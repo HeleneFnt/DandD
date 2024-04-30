@@ -1,15 +1,20 @@
 // Game.java
 package dnd;
 
+import dnd.Personna.Character;
 import dnd.Personna.CharacterBeyondBoardException;
 
 import java.util.Scanner;
 
 public class Game {
+    private final GameDialog dialog;
+    private final Character hero;
     private int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
     private final int FINAL_CASE = 64;
 
-    public Game() {
+    public Game(GameDialog dialog, Character hero) {
+        this.dialog = dialog;
+        this.hero = hero;
         this.currentPosition = 1; // Départ du joueur à la case 1
     }
 
@@ -34,17 +39,13 @@ public class Game {
             }
 
             // Affichage de la position du personnage
-            System.out.println("Your position: case " + currentPosition + " / 64");
+            dialog.notifyMovePosition(currentPosition);
 
             // Attente de l'entrée utilisateur pour lancer le dé
-            System.out.println("Press Enter to roll the dice and move.");
-            scanner.nextLine();
+            dialog.notifyThrowdice();
         }
 
-        System.out.println("You win! \uD83D\uDCB0 ");
-        System.out.println("Game over! \uD83C\uDFC1 What would you like to do next?");
-        System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '1' to start a new game \uD83D\uDCAB ");
-        System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '2' to quit the game \uD83D\uDC4B ");
+        dialog.notifyEndGame();
 
         int restartChoice = scanner.nextInt();
         switch (restartChoice) {

@@ -1,5 +1,8 @@
 package dnd.Personna;
 
+import dnd.Stuff.DefensiveStuff;
+import dnd.Stuff.OffensiveStuff;
+
 public class Warrior extends Character{
     private int healthPoints;
     private int attackStrength;
@@ -9,6 +12,8 @@ public class Warrior extends Character{
         super(name, "warrior"); // Appel du constructeur de la classe mère avec le type "warrior"
         this.healthPoints = healthPoints;
         this.attackStrength = attackStrength;
+        this.offensiveStuff = new OffensiveStuff("Weapon", 5, "Sword");
+        this.defensiveStuff = new DefensiveStuff("Protection", 10, "Shield");
     }
 
     // Getters et Setters pour les attributs spécifiques au guerrier
@@ -32,6 +37,11 @@ public class Warrior extends Character{
     @Override
     public String toString() {
         return super.toString() + ", Health Points: " + healthPoints + ", Attack Strength: " + attackStrength;
+    }
+
+    @Override
+    public String hurler() {
+        return "Waaah";
     }
 }
 

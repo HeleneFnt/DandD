@@ -12,6 +12,7 @@ public class Menu {
     private final Color color = new Color();
     private final Color.Colors colors = color.new Colors();
     private String randomColor;
+    private GameDialog dialog = new GameDialog();
 
     public void startMenu() {
         randomColor = colors.randomColor();
@@ -63,7 +64,12 @@ public class Menu {
                 System.exit(0);
             }
 
-            fictionalCharacter = new Character(name, type);
+            if (type.equals("mage")) {
+                fictionalCharacter = new Mage(name, 3 + (int) (Math.random() * (7 - 3)), 8 + (int) (Math.random() * (16 - 8)));
+            } else {
+                fictionalCharacter = new Warrior(name, 8 + (int) (Math.random() * (11 - 8)), 8 + (int) (Math.random() * (16 - 8)));
+            }
+
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
             System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
             displayCharacterSpecifics(fictionalCharacter);
@@ -73,7 +79,8 @@ public class Menu {
             switch (choice.toLowerCase()) {
                 case "y":
                     System.out.println("Starting the game... First throw \uD83C\uDFB2");
-                    new Game().playTurn(); // Appeler la méthode pour démarrer le jeu
+                    System.out.println(fictionalCharacter.hurler());
+                    new Game(dialog, fictionalCharacter).playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
                     System.out.println("You can start the game later");
@@ -142,7 +149,7 @@ public class Menu {
                 case 3:
                     System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType()));
                     System.out.println(colors.colored(randomColor, "Your informations:" + fictionalCharacter.toString()));
-                    new Game().playTurn(); // Commencer le jeu
+                    new Game(dialog, fictionalCharacter).playTurn(); // Commencer le jeu
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
