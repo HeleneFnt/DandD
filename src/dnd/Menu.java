@@ -137,7 +137,6 @@ public class Menu {
                     System.out.println("Invalid choice! \uD83D\uDEAB ");
             }
 
-
             if (fictionalCharacter.getType() == null || fictionalCharacter.getName() == null) {
                 System.out.println("Invalid character \uD83D\uDEAB ! Please ensure that both type and name are set. \uD83D\uDE15 ");
                 break;
