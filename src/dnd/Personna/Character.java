@@ -1,12 +1,17 @@
 package dnd.Personna;
 
+import dnd.Stuff.OffensiveStuff;
+import dnd.Stuff.DefensiveStuff;
+
 public class Character {
     private String type;
     private String name;
     private int healthPoints;
     private int attackStrength;
-    private String offensiveStuff;
-    private String defensiveStuff;
+    private OffensiveStuff offensiveStuff;
+    private DefensiveStuff defensiveStuff;
+
+
 
     // Constructeur de personnages sans paramètres
     public Character() {
@@ -26,13 +31,14 @@ public class Character {
         this(name);
         this.type = type;
         if (type.equals("warrior")) {
-            this.offensiveStuff = new String("Sword");
-            this.defensiveStuff = new String("Shield");
+            this.offensiveStuff = new OffensiveStuff("Sword", 10, "Sword");
+            this.defensiveStuff = new DefensiveStuff("Shield", 10, "Shield");
         } else if (type.equals("mage")){
-            this.offensiveStuff = new String("Fireball");
-            this.defensiveStuff = new String("Potion");
+            this.offensiveStuff = new OffensiveStuff("Fireball", 10, "Fireball");
+            this.defensiveStuff = new DefensiveStuff("Potion", 10, "Potion");
+        }
     }
-}
+
     // Getters et Setters
     public String getName() {
         return name;
@@ -66,21 +72,6 @@ public class Character {
         this.attackStrength = attackStrength;
     }
 
-    public String getOffensiveStuff() {
-        return offensiveStuff;
-    }
-
-    public void setOffensiveStuff(String offensiveStuff) {
-        this.offensiveStuff = offensiveStuff;
-    }
-
-    public String getDefensiveStuff() {
-        return defensiveStuff;
-    }
-
-    public void setDefensiveStuff(String defensiveStuff) {
-        this.defensiveStuff = defensiveStuff;
-    }
 
 
     @Override // surcharge de la méthode tiString()
