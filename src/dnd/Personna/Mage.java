@@ -42,7 +42,7 @@ public class Mage extends Character {
     }
 
     @Override
-    public String hurler() {
-        return "Youhou";
+    public String scream() {
+        return "Youhou ! ";
     }
 }

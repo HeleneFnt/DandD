@@ -38,8 +38,8 @@ public class Warrior extends Character{
     }
 
     @Override
-    public String hurler() {
-        return "Waaah";
+    public String scream() {
+        return "Waaah !!";
     }
 }
 

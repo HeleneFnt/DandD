@@ -4,18 +4,32 @@ package dnd;
 import dnd.Personna.Character;
 import dnd.Personna.CharacterBeyondBoardException;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
     private final GameDialog dialog;
     private final Character hero;
-    private int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
+    private final Board board;
+    protected int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
     private final int FINAL_CASE = 64;
 
-    public Game(GameDialog dialog, Character hero) {
+    public Game(GameDialog dialog, Character hero, Board board) {
         this.dialog = dialog;
         this.hero = hero;
         this.currentPosition = 1; // Départ du joueur à la case 1
+        this.board = board;
+
+    }
+
+    // méthode pour connaitre la case spécifique du héro
+    public Case getCurrentCase() {
+        ArrayList<Case> cases = board.getCases();
+        if (currentPosition >= 1 && currentPosition <= cases.size()) {
+            return cases.get(currentPosition - 1); // Les indices commencent à partir de 0
+        } else {
+            return null; // Retourne null si la position est invalide
+        }
     }
 
     // Méthode pour jouer un tour
@@ -36,6 +50,14 @@ public class Game {
                     System.out.println(e.getMessage());
                     return;
                 }
+            }
+
+            // Récupérer les informations sur la case actuelle
+            Case currentCase = getCurrentCase();
+            if (currentCase != null) {
+                System.out.println("You are on: " + currentCase.getDescription());
+            } else {
+                System.out.println("Invalid current position!");
             }
 
             // Affichage de la position du personnage

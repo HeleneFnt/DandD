@@ -4,6 +4,7 @@ import dnd.Personna.Character;
 import dnd.Personna.Mage;
 import dnd.Personna.Warrior;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -13,6 +14,7 @@ public class Menu {
     private final Color.Colors colors = color.new Colors();
     private String randomColor;
     private GameDialog dialog = new GameDialog(scanner);
+
 
     public void startMenu() {
         randomColor = colors.randomColor();
@@ -86,8 +88,9 @@ public class Menu {
             switch (choice.toLowerCase()) {
                 case "y":
                     System.out.println("Starting the game... First throw \uD83C\uDFB2");
-                    System.out.println(fictionalCharacter.hurler());
-                    new Game(dialog, fictionalCharacter).playTurn(); // Appeler la méthode pour démarrer le jeu
+                    System.out.println(fictionalCharacter.scream());
+                    Board board = new Board() ;
+                    new Game(dialog, fictionalCharacter, board).playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
                     System.out.println("You can start the game later");
@@ -110,6 +113,8 @@ public class Menu {
             }
         }
     }
+
+
     private void displayCharacterSpecifics(Character character) {
         if (character instanceof Mage) {
             Mage mage = (Mage) character;
@@ -159,7 +164,8 @@ public class Menu {
                     System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType()));
                     System.out.println(colors.colored(randomColor, "Your informations:"));
                     displayCharacterSpecifics(fictionalCharacter);
-                    new Game(dialog, fictionalCharacter).playTurn(); // Commencer le jeu
+                    Board board = new Board();
+                    new Game(dialog, fictionalCharacter, board).playTurn(); // Commencer le jeu
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");

@@ -62,5 +62,5 @@ public abstract class Character {
                 ", Offensive Stuff: " + offensiveStuff + ", Defensive Stuff: " + defensiveStuff;
     }
 
-    public abstract String hurler();
+    public abstract String scream();
 }
