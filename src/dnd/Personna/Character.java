@@ -4,10 +4,10 @@ import dnd.Stuff.OffensiveStuff;
 import dnd.Stuff.DefensiveStuff;
 
 public abstract class Character {
-    private String type;
-    private String name;
-    private int healthPoints;
-    private int attackStrength;
+    protected String type;
+    protected String name;
+    protected int healthPoints;
+    protected int attackStrength;
     protected OffensiveStuff offensiveStuff;
     protected DefensiveStuff defensiveStuff;
 
@@ -16,7 +16,6 @@ public abstract class Character {
         this.name = "";
         this.healthPoints = 10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
-        this.type = "";
     }
 
     // Constructeur de personnages avec nom

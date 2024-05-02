@@ -8,11 +8,12 @@ public class Mage extends Character {
     private int attackStrength;
 
     // Constructeur pour un mage avec nom, points de vie et attaque
-    public Mage(String name, int healthPoints, int attackStrength) {
-        super(name, "mage"); // Appel du constructeur de la classe mère avec le type "mage"
-        this.healthPoints = healthPoints;
-        this.attackStrength = attackStrength;
+    public Mage(String name) {
+        super(name, "mage");
+        this.healthPoints = (int) (Math.random() * (7 - 3)) + 3;
+        this.attackStrength = (int) (Math.random() * (16 - 8)) + 8;
 
+        // Initialisez les objets offensiveStuff et defensiveStuff ici si nécessaire
 //        this.offensiveStuff = new OffensiveStuff("Spell", 15, "Fireball");
 //        this.defensiveStuff = new DefensiveStuff("Potion", 8, "Philter");
     }

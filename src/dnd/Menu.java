@@ -36,7 +36,6 @@ public class Menu {
             }
         }
     }
-
     private void createCharacter() {
         System.out.println("Creating a fictional character... \uD83E\uDD16 ");
         String name;
@@ -65,9 +64,17 @@ public class Menu {
             }
 
             if (type.equals("mage")) {
-                fictionalCharacter = new Mage(name, 3 + (int) (Math.random() * (7 - 3)), 8 + (int) (Math.random() * (16 - 8)));
+                fictionalCharacter = new Mage(name);
             } else {
-                fictionalCharacter = new Warrior(name, 8 + (int) (Math.random() * (11 - 8)), 8 + (int) (Math.random() * (16 - 8)));
+                fictionalCharacter = new Warrior(name);
+            }
+
+            if (fictionalCharacter != null) {
+                int healthPoints = fictionalCharacter.getHealthPoints();
+                int attackStrength = fictionalCharacter.getAttackStrength();
+            } else {
+                System.out.println("Error creating character. Please try again.");
+                continue;
             }
 
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
@@ -103,7 +110,6 @@ public class Menu {
             }
         }
     }
-
     private void displayCharacterSpecifics(Character character) {
         if (character instanceof Mage) {
             Mage mage = (Mage) character;
@@ -119,7 +125,6 @@ public class Menu {
             System.out.println("The character is not a Mage or a Warrior.");
         }
     }
-
     private void modifyCharacter() {
         System.out.println("Modifying character...");
         while (true) {

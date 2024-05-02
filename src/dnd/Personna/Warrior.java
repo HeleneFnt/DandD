@@ -8,12 +8,10 @@ public class Warrior extends Character{
     private int attackStrength;
 
     // Constructeur pour un guerrier avec nom, points de vie et attaque
-    public Warrior (String name, int healthPoints, int attackStrength) {
+    public Warrior (String name) {
         super(name, "warrior"); // Appel du constructeur de la classe mère avec le type "warrior"
-        this.healthPoints = healthPoints;
-        this.attackStrength = attackStrength;
-//        this.offensiveStuff = new OffensiveStuff("Weapon", 5, "Sword");
-//        this.defensiveStuff = new DefensiveStuff("Protection", 10, "Shield");
+        this.healthPoints = (int) (Math.random() * (11 - 4)+5);
+        this.attackStrength = (int) (Math.random() * (11 - 4)+5);
     }
 
     // Getters et Setters pour les attributs spécifiques au guerrier
