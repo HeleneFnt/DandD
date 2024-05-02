@@ -13,8 +13,8 @@ public class Mage extends Character {
         this.healthPoints = healthPoints;
         this.attackStrength = attackStrength;
 
-        this.offensiveStuff = new OffensiveStuff("Spell", 15, "Fireball");
-        this.defensiveStuff = new DefensiveStuff("Potion", 8, "Philter");
+//        this.offensiveStuff = new OffensiveStuff("Spell", 15, "Fireball");
+//        this.defensiveStuff = new DefensiveStuff("Potion", 8, "Philter");
     }
 
     // Getters et Setters pour les attributs spécifiques au mage

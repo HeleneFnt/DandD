@@ -1,6 +1,6 @@
 package dnd.Stuff;
 
-public class OffensiveStuff {
+public abstract class OffensiveStuff {
     private String type;
     private int attackStrength;
     private String name;

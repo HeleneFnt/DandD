@@ -12,8 +12,8 @@ public class Warrior extends Character{
         super(name, "warrior"); // Appel du constructeur de la classe mère avec le type "warrior"
         this.healthPoints = healthPoints;
         this.attackStrength = attackStrength;
-        this.offensiveStuff = new OffensiveStuff("Weapon", 5, "Sword");
-        this.defensiveStuff = new DefensiveStuff("Protection", 10, "Shield");
+//        this.offensiveStuff = new OffensiveStuff("Weapon", 5, "Sword");
+//        this.defensiveStuff = new DefensiveStuff("Protection", 10, "Shield");
     }
 
     // Getters et Setters pour les attributs spécifiques au guerrier

@@ -1,9 +1,9 @@
 package dnd.Stuff;
 
-public class DefensiveStuff {
-    private String type;
-    private int defenseValue;
-    private String name;
+public abstract class DefensiveStuff {
+    protected String type;
+    protected int defenseValue;
+    protected String name;
 
     public DefensiveStuff(String defense, int defenseValue, String name) {
         this.type = defense;

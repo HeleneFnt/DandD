@@ -17,8 +17,6 @@ public abstract class Character {
         this.healthPoints = 10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
         this.type = "";
-        this.offensiveStuff = new OffensiveStuff("", 0, ""); // Initialisation par défaut
-        this.defensiveStuff = new DefensiveStuff("", 0, ""); // Initialisation par défaut
     }
 
     // Constructeur de personnages avec nom
