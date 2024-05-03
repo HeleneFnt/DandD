@@ -1,6 +1,8 @@
 package dnd.Personna;
 
-public class Wizard extends Enemy{
+import dnd.BoardGame.EnemyCase;
+
+public class Wizard extends Enemy {
     private int lifePoints;
     private int damage;
 
@@ -10,4 +12,8 @@ public class Wizard extends Enemy{
         this.damage = 2;
     }
 
+    @Override
+    public String interaction(Character character) {
+        return "";
+    }
 }

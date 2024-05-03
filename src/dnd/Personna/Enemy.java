@@ -29,4 +29,13 @@ public abstract class Enemy {
     public void setType(String type) {
         this.type = type;
     }
+
+    public int getLifePoints() {
+        return lifePoints;
+    }
+    public int getDamage() {
+        return damage;
+    }
+
+    public abstract String interaction(Character character);
 }

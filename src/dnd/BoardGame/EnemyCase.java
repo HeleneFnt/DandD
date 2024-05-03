@@ -1,9 +1,10 @@
 package dnd.BoardGame;
 
 import dnd.Personna.Character;
+import dnd.Personna.Enemy;
 import dnd.Personna.Mage;
 
-public class EnemyCase implements Case {
+public abstract class EnemyCase implements Case {
         private int position;
         private String description;
 
@@ -19,8 +20,9 @@ public class EnemyCase implements Case {
     public int getPosition() {
             return position;
         }
-    @Override
-    public String interaction(Character character) {
-        return "ENEMY";
+
+    public String interaction(Enemy enemy) {
+       String enemyName = enemy.getName();
+       return "You encounter an enemy: " + enemyName;
     }
 }

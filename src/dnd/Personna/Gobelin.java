@@ -1,6 +1,8 @@
 package dnd.Personna;
 
-public class Gobelin extends Enemy{
+import dnd.BoardGame.EnemyCase;
+
+public class Gobelin extends Enemy {
     private int lifePoints;
     private int damage;
 
@@ -8,5 +10,10 @@ public class Gobelin extends Enemy{
         super(name, "gobelin");
         this.lifePoints = 6;
         this.damage = 1;
+    }
+
+    @Override
+    public String interaction(Character character) {
+        return "";
     }
 }
