@@ -1,4 +1,4 @@
-package dnd;
+package dnd.BoardGame;
 
 public interface Case {
     int getPosition();

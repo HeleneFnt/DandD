@@ -35,13 +35,7 @@ public class Mage extends Character {
         this.attackStrength = attackStrength;
     }
 
-    // Méthode toString pour afficher les informations du mage
-    @Override
-    public String toString() {
-        return super.toString() + ", Health Points: " + healthPoints + ", Attack Strength: " + attackStrength;
-    }
 
-    @Override
     public String scream() {
         return "Youhou ! ";
     }

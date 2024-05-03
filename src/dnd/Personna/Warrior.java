@@ -32,12 +32,8 @@ public class Warrior extends Character{
     }
 
     // Méthode toString pour afficher les informations du guerrier
-    @Override
-    public String toString() {
-        return super.toString() + ", Health Points: " + healthPoints + ", Attack Strength: " + attackStrength;
-    }
 
-    @Override
+
     public String scream() {
         return "Waaah !!";
     }

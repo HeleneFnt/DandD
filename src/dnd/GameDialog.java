@@ -11,7 +11,7 @@ public class GameDialog {
 
 
     public void notifyMovePosition(int currentPosition) {
-        System.out.println("Your position: case " + currentPosition + " / 64");
+        System.out.println("Your position: case " + currentPosition + " / 4");
     }
 
     public void notifyThrowdice() {

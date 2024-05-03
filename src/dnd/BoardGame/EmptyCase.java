@@ -1,4 +1,4 @@
-package dnd;
+package dnd.BoardGame;
 
 public class EmptyCase implements Case {
     private int position;

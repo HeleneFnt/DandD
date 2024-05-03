@@ -1,6 +1,9 @@
 // Game.java
 package dnd;
 
+import dnd.BoardGame.Board;
+import dnd.BoardGame.Case;
+import dnd.BoardGame.D1;
 import dnd.Personna.Character;
 import dnd.Personna.CharacterBeyondBoardException;
 
@@ -12,7 +15,7 @@ public class Game {
     private final Character hero;
     private final Board board;
     protected int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
-    private final int FINAL_CASE = 64;
+    private final int FINAL_CASE = 4;
 
     public Game(GameDialog dialog, Character hero, Board board) {
         this.dialog = dialog;
@@ -35,10 +38,12 @@ public class Game {
     // Méthode pour jouer un tour
     public void playTurn() {
         Scanner scanner = new Scanner(System.in);
+        D1 d1 = new D1();
 
         while (currentPosition < FINAL_CASE) {
             // Lance le dé
-            int diceRoll = (int) (Math.random() * 6) + 1;
+            int diceRoll = d1.throwDice();
+//            int diceRoll = (int) (Math.random() * 6) + 1;
             // Met à jour la position actuelle du joueur en fonction du résultat du dé
             currentPosition += diceRoll;
 

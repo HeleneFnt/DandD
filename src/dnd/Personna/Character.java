@@ -56,11 +56,5 @@ public abstract class Character {
     }
 
 
-    @Override // surcharge de la méthode tiString()
-    public String toString() {
-        return "Name: " + name + ", HP: " + healthPoints + ", Attack: " + attackStrength +
-                ", Offensive Stuff: " + offensiveStuff + ", Defensive Stuff: " + defensiveStuff;
-    }
-
     public abstract String scream();
 }

@@ -1,10 +1,10 @@
-package dnd;
+package dnd.BoardGame;
 
-public class PositiveCase implements Case {
+public class EnemyCase implements Case {
         private int position;
         private String description;
 
-    public PositiveCase(int position, String description) {
+    public EnemyCase(int position, String description) {
             this.position = position;
             this.description = description;
         }
@@ -21,11 +21,11 @@ public class PositiveCase implements Case {
 
         @Override
         public String getEffect() {
-            return "Positive effect";
+            return "Negative effect";
         }
 
         @Override
         public String openEffect() {
-            return "You're lucky, here a potion/weapon !";
+            return "Bad luck, meet this Gobelin";
         }
     }

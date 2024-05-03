@@ -1,10 +1,10 @@
 package dnd;
 
+import dnd.BoardGame.Board;
 import dnd.Personna.Character;
 import dnd.Personna.Mage;
 import dnd.Personna.Warrior;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
