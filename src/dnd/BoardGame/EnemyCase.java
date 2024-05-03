@@ -1,5 +1,8 @@
 package dnd.BoardGame;
 
+import dnd.Personna.Character;
+import dnd.Personna.Mage;
+
 public class EnemyCase implements Case {
         private int position;
         private String description;
@@ -9,23 +12,15 @@ public class EnemyCase implements Case {
             this.description = description;
         }
 
-    @Override
     public String getDescription() {
         return description;
     }
 
-        @Override
-        public int getPosition() {
+    public int getPosition() {
             return position;
         }
-
-        @Override
-        public String getEffect() {
-            return "Negative effect";
-        }
-
-        @Override
-        public String openEffect() {
-            return "Bad luck, meet this Gobelin";
-        }
+    @Override
+    public String interaction(Character character) {
+        return "ENEMY";
     }
+}

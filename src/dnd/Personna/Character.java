@@ -57,4 +57,6 @@ public abstract class Character {
 
 
     public abstract String scream();
+
+    public abstract void applyPotionEffect();
 }

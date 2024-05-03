@@ -1,5 +1,7 @@
 package dnd.BoardGame;
 
+import dnd.Personna.Character;
+
 public class BonusWeaponCase implements Case {
         private int position;
         private String description;
@@ -9,23 +11,17 @@ public class BonusWeaponCase implements Case {
             this.description = description;
         }
 
-    @Override
     public String getDescription() {
         return description;
     }
 
-        @Override
-        public int getPosition() {
+    @Override
+    public String interaction(Character character) {
+        return "weapon";
+    }
+
+    public int getPosition() {
             return position;
         }
 
-        @Override
-        public String getEffect() {
-            return "Positive effect";
-        }
-
-        @Override
-        public String openEffect() {
-            return "You're lucky, here a potion/weapon !";
-        }
-    }
+}

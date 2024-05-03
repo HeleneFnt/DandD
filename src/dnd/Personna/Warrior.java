@@ -37,6 +37,12 @@ public class Warrior extends Character{
     public String scream() {
         return "Waaah !!";
     }
+
+    public void applyPotionEffect() {
+        healthPoints += 5;
+        System.out.println("You drank the potion and gained 10 health points.");
+    }
 }
+
 
 

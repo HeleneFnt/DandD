@@ -1,31 +1,28 @@
 package dnd.BoardGame;
 
+import dnd.Personna.Character;
+
 public class EmptyCase implements Case {
     private int position;
     private String description;
+    private String interaction;
 
-    public EmptyCase(int position, String description) {
+    public EmptyCase(int position, String description, String interaction) {
         this.position = position;
         this.description = description;
+        this.interaction = interaction;
     }
 
-    @Override
     public String getDescription() {
-        return description;
+        return "No Effect";
     }
 
-    @Override
     public int getPosition() {
         return position;
     }
-
     @Override
-    public String getEffect() {
-        return "No effect";
+    public String interaction(Character character) {
+        return "Nothing really happens...";
     }
 
-    @Override
-    public String openEffect() {
-        return "Nothing really happens";
-    }
 }

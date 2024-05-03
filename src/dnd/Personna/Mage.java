@@ -39,4 +39,9 @@ public class Mage extends Character {
     public String scream() {
         return "Youhou ! ";
     }
+
+    public void applyPotionEffect() {
+        healthPoints += 10;
+        System.out.println("You drank the potion and gained 10 health points.");
+    }
 }
