@@ -3,6 +3,8 @@ package dnd.Personna;
 import dnd.Stuff.DefensiveStuff;
 import dnd.Stuff.OffensiveStuff;
 
+import java.util.Random;
+
 public class Warrior extends Character{
     private int healthPoints;
     private int attackStrength;
@@ -38,10 +40,30 @@ public class Warrior extends Character{
         return "Waaah !!";
     }
 
-    public void applyPotionEffect() {
+
+    public void useGreatHealthPotion() {
         healthPoints += 5;
-        System.out.println("You drank the potion and gained 10 health points.");
+        System.out.println("You drank the potion and gained 5 health points.");
     }
+    public void useStandardHealthPotion(){
+        healthPoints += 2;
+        System.out.println("You drank the potion and gained 2 health points.");
+    }
+
+    public void increaseAttack() {
+        Random random = new Random();
+        int weaponType = random.nextInt(2);
+
+        if (weaponType==0) {
+            attackStrength +=3;
+            System.out.println("You posses a club now ! Attack incresed by 3 points.");
+        }else {
+            attackStrength +=5;
+            System.out.println("You posses a sword ! Attack increased by 5 points.");
+        }
+    }
+
+
 }
 
 

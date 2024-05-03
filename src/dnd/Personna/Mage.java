@@ -3,6 +3,8 @@ package dnd.Personna;
 import dnd.Stuff.DefensiveStuff;
 import dnd.Stuff.OffensiveStuff;
 
+import java.util.Random;
+
 public class Mage extends Character {
     private int healthPoints;
     private int attackStrength;
@@ -40,8 +42,26 @@ public class Mage extends Character {
         return "Youhou ! ";
     }
 
-    public void applyPotionEffect() {
-        healthPoints += 10;
-        System.out.println("You drank the potion and gained 10 health points.");
+    public void useGreatHealthPotion() {
+        healthPoints += 5;
+        System.out.println("You drank the potion and gained 5 health points.");
     }
+    public void useStandardHealthPotion(){
+        healthPoints += 2;
+        System.out.println("You drank the potion and gained 2 health points.");
+            }
+
+    public void increaseAttack() {
+        Random random = new Random();
+        int spellType = random.nextInt(2);
+
+        if (spellType == 0) {
+            attackStrength += 2;
+            System.out.println("You learn Lightning Bolt! Attack increased by 2 points.");
+        } else {
+            attackStrength += 7;
+            System.out.println("You learn Fireball! Attack increased by 7 points.");
+        }
+    }
+
 }

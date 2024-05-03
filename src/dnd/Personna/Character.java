@@ -58,5 +58,11 @@ public abstract class Character {
 
     public abstract String scream();
 
-    public abstract void applyPotionEffect();
+
+    public abstract void useStandardHealthPotion();
+
+    public abstract void useGreatHealthPotion();
+
+    public abstract void increaseAttack();
+
 }

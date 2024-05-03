@@ -12,10 +12,10 @@ public class Board {
 
     private void initializeCases() {
 
-        cases.add(new EmptyCase(1, "", "nothing"));
-        cases.add(new EnemyCase(2, "gdf"));
-        cases.add(new BonusWeaponCase(3, " Lucky you ! Here a new weapon"));
-        cases.add(new BonusProtectionCase(4, "Lucky you ! Here a potion"));
+        cases.add(new EmptyCase(1, "No effect", "Nothing"));
+        cases.add(new EnemyCase(2, "Mouhahaaaa !  Meet this enemy !"));
+        cases.add(new BonusWeaponCase(3, " Lucky you ! Here a new item !"));
+        cases.add(new HealthPotionCase(4, "Lucky you ! Here a health potion !"));
 
     }
 

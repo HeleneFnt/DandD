@@ -1,6 +1,8 @@
 package dnd.BoardGame;
 
 import dnd.Personna.Character;
+import dnd.Personna.Mage;
+import dnd.Personna.Warrior;
 
 public class BonusWeaponCase implements Case {
         private int position;
@@ -15,13 +17,21 @@ public class BonusWeaponCase implements Case {
         return description;
     }
 
-    @Override
-    public String interaction(Character character) {
-        return "weapon";
-    }
-
     public int getPosition() {
             return position;
         }
+
+    @Override
+    public String interaction(Character character) {
+        if (character instanceof Mage) {
+            ((Mage) character).increaseAttack();
+            return "Your damage: " + ((Mage) character).getAttackStrength();
+        } else if (character instanceof Warrior) {
+            ((Warrior) character).increaseAttack();
+            return "Your damage: " + ((Warrior) character).getAttackStrength();
+        } else {
+            return "Invalid character type!";
+        }
+    }
 
 }
