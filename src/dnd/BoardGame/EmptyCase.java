@@ -5,12 +5,12 @@ import dnd.Personna.Character;
 public class EmptyCase implements Case {
     private int position;
     private String description;
-    private String interaction;
 
-    public EmptyCase(int position, String description, String interaction) {
+
+    public EmptyCase(int position, String description) {
         this.position = position;
         this.description = description;
-        this.interaction = interaction;
+
     }
 
     public String getDescription() {
