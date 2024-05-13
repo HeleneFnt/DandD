@@ -4,7 +4,7 @@ import dnd.Personna.Character;
 import dnd.Personna.Enemy;
 import dnd.Personna.Mage;
 
-public abstract class EnemyCase implements Case {
+public  class EnemyCase implements Case {
         private int position;
         private String description;
 
@@ -17,12 +17,14 @@ public abstract class EnemyCase implements Case {
         return description;
     }
 
+    @Override
+    public String interaction(Character character) {
+        return "";
+    }
+
     public int getPosition() {
             return position;
         }
 
-    public String interaction(Enemy enemy) {
-       String enemyName = enemy.getName();
-       return "You encounter an enemy: " + enemyName;
-    }
+
 }

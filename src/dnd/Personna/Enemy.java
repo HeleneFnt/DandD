@@ -1,10 +1,14 @@
 package dnd.Personna;
 
-public abstract class Enemy {
+import dnd.BoardGame.Case;
+
+public abstract class Enemy implements Case {
     protected String type;
     protected String name;
     protected int lifePoints;
     protected int damage;
+    protected int position;
+    protected String description;
 
 
     // Constructeur d'ennemi  avec nom et type
@@ -35,6 +39,16 @@ public abstract class Enemy {
     }
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public int getPosition() {
+        return 0;
+    }
+
+    @Override
+    public String getDescription() {
+        return "";
     }
 
     public abstract String interaction(Character character);

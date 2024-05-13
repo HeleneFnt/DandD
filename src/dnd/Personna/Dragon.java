@@ -13,6 +13,6 @@ public class Dragon extends Enemy {
 
     @Override
     public String interaction(Character character) {
-        return "The dragon breathes fire at you!";
+        return "The mighty dragon attacks!";
     }
 }

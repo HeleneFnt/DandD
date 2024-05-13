@@ -1,7 +1,5 @@
 package dnd.Personna;
 
-import dnd.BoardGame.EnemyCase;
-
 public class Wizard extends Enemy {
     private int lifePoints;
     private int damage;
@@ -14,6 +12,6 @@ public class Wizard extends Enemy {
 
     @Override
     public String interaction(Character character) {
-        return "";
+        return "The wizard casts a spell!";
     }
 }
