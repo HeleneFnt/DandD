@@ -43,6 +43,7 @@ public class Board {
         }
     }
 
+
     public ArrayList<Case> getCases() {
         return cases;
     }

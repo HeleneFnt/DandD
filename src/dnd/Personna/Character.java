@@ -14,7 +14,7 @@ public abstract class Character {
     // Constructeur de personnages sans paramètres
     public Character() {
         this.name = "";
-        this.healthPoints = 10; // Valeur par défaut
+        this.healthPoints=10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
     }
 
@@ -67,5 +67,12 @@ public abstract class Character {
 
     public String interaction() {
         return null;
+    }
+
+    public void reduceLifePoints(int damage) {
+    }
+
+    public int getLifePoints() {
+        return healthPoints;
     }
 }
