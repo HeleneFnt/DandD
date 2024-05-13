@@ -59,7 +59,8 @@ public class Game {
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
                 System.out.println("You are on: " + currentCase.getDescription());
-                String interactionResult = currentCase.interaction(hero);                System.out.println(interactionResult);
+                String interactionResult = currentCase.interaction(hero);
+                System.out.println(interactionResult);
             } else {
                 System.out.println("Invalid current position!");
             }

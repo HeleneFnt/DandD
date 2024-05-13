@@ -1,17 +1,15 @@
 package dnd.BoardGame;
 
 import dnd.Personna.Character;
-import dnd.Personna.Enemy;
-import dnd.Personna.Mage;
 
-public  class EnemyCase implements Case {
-        private int position;
-        private String description;
+public abstract class EnemyCase implements Case {
+    private int position;
+    private String description;
 
     public EnemyCase(int position, String description) {
-            this.position = position;
-            this.description = description;
-        }
+        this.position = position;
+        this.description = description;
+    }
 
     public String getDescription() {
         return description;
@@ -19,12 +17,10 @@ public  class EnemyCase implements Case {
 
     @Override
     public String interaction(Character character) {
-        return "";
+        return "You encountered an enemy!";
     }
 
     public int getPosition() {
-            return position;
-        }
-
-
+        return position;
+    }
 }

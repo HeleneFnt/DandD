@@ -48,7 +48,7 @@ public abstract class Enemy implements Case {
 
     @Override
     public String getDescription() {
-        return "";
+        return "Enemy case";
     }
 
     public abstract String interaction(Character character);

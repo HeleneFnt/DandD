@@ -65,4 +65,7 @@ public abstract class Character {
 
     public abstract void increaseAttack();
 
+    public String interaction() {
+        return null;
+    }
 }

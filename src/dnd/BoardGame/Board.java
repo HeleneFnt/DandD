@@ -17,14 +17,15 @@ public class Board {
 
     private void initializeCases() {
         cases.add(new EmptyCase(1, "No effect"));
-        cases.add(new EnemyCase(2, "Mouhahaaaa !  Meet this enemy !")); // Vous pouvez également utiliser un texte générique ici
+        initializeRandomEnemyCase(2, "Mouhahaaaa !  Meet this enemy !");
         cases.add(new BonusWeaponCase(3, " Lucky you ! Here a new item !"));
         cases.add(new HealthPotionCase(4, "Lucky you ! Here a health potion !"));
     }
 
     private void initializeRandomEnemyCase(int position, String description) {
         Enemy enemy = createRandomEnemyCase(position, description);
-        cases.add(enemy);
+        String interactionResult = enemy.interaction(null); // Passer null comme paramètre pour la méthode interaction car le personnage n'est pas nécessaire ici
+        cases.add(enemy); // Ajoute l'ennemi à la liste de cases
     }
 
 
