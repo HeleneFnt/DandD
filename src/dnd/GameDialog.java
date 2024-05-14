@@ -26,11 +26,13 @@ public class GameDialog {
         System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '2' to quit the game \uD83D\uDC4B ");
     }
 
-    public void notifyHeroAttack(String name, int damage) {
-        System.out.println("Hero attacked: " + name + " damage: " + damage);
+    public void notifyHeroAttack(String playerName, String enemyName, int damage) {
+        System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damage.");
     }
+
 
     public void notifyEnemyAttack(String name, int damage) {
         System.out.println( name + " attacked: " + name + " damage: " + damage);
     }
+
 }

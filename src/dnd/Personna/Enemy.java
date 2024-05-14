@@ -13,8 +13,8 @@ public abstract class Enemy implements Case {
 
 
     // Constructeur d'ennemi  avec nom et type
-    public Enemy (String name, String type) {
-        this.name= name;
+    public Enemy(String name, String type) {
+        this.name = name;
         this.type = type;
     }
 
@@ -38,6 +38,7 @@ public abstract class Enemy implements Case {
     public int getLifePoints() {
         return lifePoints;
     }
+
     public int getDamage() {
         return damage;
     }
@@ -53,14 +54,16 @@ public abstract class Enemy implements Case {
     }
 
     @Override
-    public String interaction(Character character , GameDialog dialog) {
+    public String interaction(Character character, GameDialog dialog) {
         while (true) {
-dialog.notifyHeroAttack(character.getName(), character.getAttackStrength()) ;
-            lifePoints = getLifePoints() - character.getAttackStrength();
+            // Notification de l'attaque du héros
+            dialog.notifyHeroAttack(character.getName(), name, character.getAttackStrength());
+            lifePoints -= character.getAttackStrength();
             if (lifePoints <= 0) {
                 return "Enemy defeats";
             }
-dialog.notifyEnemyAttack (this.getName(), damage);
+            // Notification de l'attaque de l'ennemi
+            dialog.notifyEnemyAttack(name, damage);
             character.reduceLifePoints(damage);
             if (character.getHealthPoints() <= 0) {
                 return "Hero defeats";
@@ -69,6 +72,6 @@ dialog.notifyEnemyAttack (this.getName(), damage);
     }
 
     public void reduceLifePoints(int playerDamage) {
-
+        // Réduction des points de vie de l'ennemi
     }
 }

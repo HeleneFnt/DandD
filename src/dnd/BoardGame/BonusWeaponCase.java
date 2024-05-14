@@ -63,27 +63,21 @@ public class BonusWeaponCase implements Case {
         Random random = new Random();
         int weaponType = random.nextInt(2);
 
-        switch (weaponType) {
-            case 0:
-                return new Club();
-            case 1:
-                return new Sword();
-            default:
-                return new Club(); // En cas d'erreur, retourne une Massue par défaut
-        }
+        return switch (weaponType) {
+            case 0 -> new Club();
+            case 1 -> new Sword();
+            default -> new Club(); // En cas d'erreur, retourne une Massue par défaut
+        };
     }
 
     private Spell getRandomSpell() {
         Random random = new Random();
         int spellType = random.nextInt(2);
 
-        switch (spellType) {
-            case 0:
-                return new Lightning();
-            case 1:
-                return new Fireball();
-            default:
-                return new Lightning(); // En cas d'erreur, retourne un Eclair par défaut
-        }
+        return switch (spellType) {
+            case 0 -> new Lightning();
+            case 1 -> new Fireball();
+            default -> new Lightning(); // En cas d'erreur, retourne un Eclair par défaut
+        };
     }
 }
