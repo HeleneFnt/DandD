@@ -11,7 +11,7 @@ public class GameDialog {
 
 
     public void notifyMovePosition(int currentPosition) {
-        System.out.println("Your position: case " + currentPosition + " / 4");
+        System.out.println("Your position: case " + currentPosition + " / 62");
     }
 
     public void notifyThrowdice() {
@@ -27,12 +27,12 @@ public class GameDialog {
     }
 
     public void notifyHeroAttack(String playerName, String enemyName, int damage) {
-        System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damage.");
+        System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damages.");
     }
 
 
     public void notifyEnemyAttack(String name, int damage) {
-        System.out.println( name + " attacked: " + name + " damage: " + damage);
+        System.out.println( name + " attacked: " + name + " damages: " + damage);
     }
 
 }

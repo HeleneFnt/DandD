@@ -18,6 +18,10 @@ public abstract class Enemy implements Case {
         this.type = type;
     }
 
+    public Enemy() {
+
+    }
+
     // Getters et Setters
     public String getName() {
         return name;
@@ -25,22 +29,6 @@ public abstract class Enemy implements Case {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getLifePoints() {
-        return lifePoints;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 
     @Override
@@ -71,7 +59,4 @@ public abstract class Enemy implements Case {
         }
     }
 
-    public void reduceLifePoints(int playerDamage) {
-        // Réduction des points de vie de l'ennemi
-    }
 }

@@ -9,8 +9,8 @@ import dnd.Stuff.*;
 import java.util.Random;
 
 public class BonusWeaponCase implements Case {
-    private int position;
-    private String description;
+    private final int position;
+    private final String description;
 
     public BonusWeaponCase(int position, String description) {
         this.position = position;
@@ -66,7 +66,7 @@ public class BonusWeaponCase implements Case {
         return switch (weaponType) {
             case 0 -> new Club();
             case 1 -> new Sword();
-            default -> new Club(); // En cas d'erreur, retourne une Massue par défaut
+            default -> new Club();
         };
     }
 
@@ -77,7 +77,7 @@ public class BonusWeaponCase implements Case {
         return switch (spellType) {
             case 0 -> new Lightning();
             case 1 -> new Fireball();
-            default -> new Lightning(); // En cas d'erreur, retourne un Eclair par défaut
+            default -> new Lightning();
         };
     }
 }

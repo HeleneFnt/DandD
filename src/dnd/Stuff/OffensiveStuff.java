@@ -11,6 +11,10 @@ public abstract class OffensiveStuff {
         this.name=name;
     }
 
+    public OffensiveStuff() {
+
+    }
+
     // Getters & Setters
     public String getAttack() {
         return type;

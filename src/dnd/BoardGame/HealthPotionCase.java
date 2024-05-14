@@ -1,43 +1,23 @@
 package dnd.BoardGame;
 
-import dnd.GameDialog;
-import dnd.Personna.Character;
-import dnd.Personna.Mage;
-import dnd.Personna.Warrior;
+// Classe abstraite représentant un objet utilisable par les personnages
+public abstract class HealthPotionCase {
+    private String name;
+    private int healingAmount;
 
-import java.util.Random;
-
-public class HealthPotionCase implements Case {
-    private int position;
-    private String description;
-
-    public HealthPotionCase(int position, String description) {
-        this.position = position;
-        this.description = description;
+    public void HealthPotion(String name, int healingAmount) {
+        this.name = name;
+        this.healingAmount = healingAmount;
     }
 
-    public String getDescription() {
-        return description;
+    public HealthPotionCase(String standardHealthPotion, int i) {
     }
 
-    public int getPosition() {
-        return position;
+    public String getName() {
+        return name;
     }
-    public String interaction(Character character, GameDialog dialog) {
-        Random random= new Random();
-        int potionType = random.nextInt(2);
-        if (character instanceof Mage || character instanceof Warrior) {
-            // Appliquer les effets des potions en fonction du type de personnage
-            if (potionType == 0) {
-                character.useStandardHealthPotion();
-                return "Your HP : " + character.getHealthPoints();
-            } else {
-                character.useGreatHealthPotion();
-                return"Your HP : " + character.getHealthPoints();
-            }
-        } else {
-            return "You can't have Potion effect!";
-        }
+    public int getHealingAmount() {
+        return healingAmount;
     }
 
 }

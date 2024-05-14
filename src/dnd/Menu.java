@@ -113,8 +113,6 @@ public class Menu {
             }
         }
     }
-
-
     private void displayCharacterSpecifics(Character character) {
         if (character instanceof Mage) {
             Mage mage = (Mage) character;

@@ -11,8 +11,12 @@ public class Spell extends OffensiveStuff {
         this.name = name;
     }
 
+    public Spell() {
+        super();
+    }
+
     @Override
     public String toString() {
-        return "Name: " + name + ", type: " + type + ", Damage: " + damage;
+        return "Name: " + name + ", type: " + type + ", Damages: " + damage;
     }
 }

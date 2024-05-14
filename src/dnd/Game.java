@@ -13,7 +13,7 @@ public class Game {
     private final Character hero;
     private final Board board;
     protected int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
-    private final int FINAL_CASE = 4;
+    private final int FINAL_CASE = 62;
 
     public Game(GameDialog dialog, Character hero, Board board) {
         this.dialog = dialog;
@@ -36,7 +36,7 @@ public class Game {
     // Méthode pour jouer un tour
     public void playTurn() {
         Scanner scanner = new Scanner(System.in);
-        Dice d1 = new D1();
+        Dice d1 = new D6();
 
         while (currentPosition < FINAL_CASE) {
             // Lance le dé
@@ -55,7 +55,7 @@ public class Game {
                 }
             }
 
-            // Récupérer les informations sur la case actuelle
+// Récupérer les informations sur la case actuelle à partir du plateau
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
                 System.out.println("You are on: " + currentCase.getDescription());

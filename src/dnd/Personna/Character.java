@@ -60,25 +60,20 @@ public abstract class Character {
     public abstract String scream();
 
 
-    public abstract void useStandardHealthPotion();
-
-    public abstract void useGreatHealthPotion();
-
     public abstract void increaseAttack();
 
     public String interaction() {
         return null;
     }
 
+
+    // Méthode pour l'utilisation de la potion de vie
+    public void heal(int amount) {
+        healthPoints += amount;
+    }
+
     public void reduceLifePoints(int damage) {
         healthPoints = getHealthPoints() - damage;
     }
 
-    public int getLifePoints() {
-        return healthPoints;
-    }
-
-    public int attack(){
-        return attackStrength;
-    }
 }

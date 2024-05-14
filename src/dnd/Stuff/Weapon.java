@@ -11,9 +11,13 @@ public class Weapon extends OffensiveStuff{
         this.name = name;
     }
 
+    public Weapon() {
+        super();
+    }
+
     @Override
     public String toString() {
-        return "Name: " + name + ", type: " + type + ", Damage: " + damage;
+        return "Name: " + name + ", type: " + type + ", Damages: " + damage;
     }
 }
 
