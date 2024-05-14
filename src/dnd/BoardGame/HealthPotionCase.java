@@ -1,5 +1,6 @@
 package dnd.BoardGame;
 
+import dnd.GameDialog;
 import dnd.Personna.Character;
 import dnd.Personna.Mage;
 import dnd.Personna.Warrior;
@@ -22,7 +23,7 @@ public class HealthPotionCase implements Case {
     public int getPosition() {
         return position;
     }
-    public String interaction(Character character) {
+    public String interaction(Character character, GameDialog dialog) {
         Random random= new Random();
         int potionType = random.nextInt(2);
         if (character instanceof Mage || character instanceof Warrior) {

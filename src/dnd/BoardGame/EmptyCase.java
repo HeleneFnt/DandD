@@ -1,5 +1,6 @@
 package dnd.BoardGame;
 
+import dnd.GameDialog;
 import dnd.Personna.Character;
 
 public class EmptyCase implements Case {
@@ -21,7 +22,7 @@ public class EmptyCase implements Case {
         return position;
     }
     @Override
-    public String interaction(Character character) {
+    public String interaction(Character character , GameDialog dialog) {
         return "Nothing really happens...";
     }
 

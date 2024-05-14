@@ -1,6 +1,6 @@
 package dnd.Stuff;
 
-public class Potion extends DefensiveStuff {
+public abstract class Potion extends DefensiveStuff {
     private String type ;
     private int defenseValue;
     private String name;

@@ -1,6 +1,7 @@
 package dnd.Personna;
 
 import dnd.BoardGame.Case;
+import dnd.GameDialog;
 
 public abstract class Enemy implements Case {
     protected String type;
@@ -51,5 +52,23 @@ public abstract class Enemy implements Case {
         return "Enemy case";
     }
 
-    public abstract String interaction(Character character);
+    @Override
+    public String interaction(Character character , GameDialog dialog) {
+        while (true) {
+dialog.notifyHeroAttack(character.getName(), character.getAttackStrength()) ;
+            lifePoints = getLifePoints() - character.getAttackStrength();
+            if (lifePoints <= 0) {
+                return "Enemy defeats";
+            }
+dialog.notifyEnemyAttack (this.getName(), damage);
+            character.reduceLifePoints(damage);
+            if (character.getHealthPoints() <= 0) {
+                return "Hero defeats";
+            }
+        }
+    }
+
+    public void reduceLifePoints(int playerDamage) {
+
+    }
 }

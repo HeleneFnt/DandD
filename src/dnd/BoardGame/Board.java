@@ -4,6 +4,7 @@ import dnd.Personna.Enemy;
 import dnd.Personna.Gobelin;
 import dnd.Personna.Wizard;
 import dnd.Personna.Dragon;
+import dnd.Stuff.Shield;
 
 import java.util.ArrayList;
 
@@ -18,13 +19,12 @@ public class Board {
     private void initializeCases() {
         cases.add(new EmptyCase(1, "No effect"));
         initializeRandomEnemyCase(2, "Mouhahaaaa !  Meet this enemy !");
-        cases.add(new BonusWeaponCase(3, " Lucky you ! Here a new item !"));
+        cases.add(new BonusWeaponCase(3, "Lucky you! Here a new weapon or spell!"));
         cases.add(new HealthPotionCase(4, "Lucky you ! Here a health potion !"));
     }
 
     private void initializeRandomEnemyCase(int position, String description) {
         Enemy enemy = createRandomEnemyCase(position, description);
-        String interactionResult = enemy.interaction(null); // Passer null comme paramètre pour la méthode interaction car le personnage n'est pas nécessaire ici
         cases.add(enemy); // Ajoute l'ennemi à la liste de cases
     }
 

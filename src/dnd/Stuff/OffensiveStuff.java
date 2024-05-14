@@ -6,12 +6,12 @@ public abstract class OffensiveStuff {
     private String name;
 
     public OffensiveStuff(String attack, int attackStrength, String name) {
-    this.type=attack;
-    this.attackStrength=attackStrength;
-    this.name=name;
+        this.type=attack;
+        this.attackStrength=attackStrength;
+        this.name=name;
     }
 
-// Getters & Setters
+    // Getters & Setters
     public String getAttack() {
         return type;
     }

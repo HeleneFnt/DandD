@@ -4,6 +4,7 @@ import dnd.Stuff.OffensiveStuff;
 import dnd.Stuff.DefensiveStuff;
 
 public abstract class Character {
+
     protected String type;
     protected String name;
     protected int healthPoints;
@@ -70,9 +71,14 @@ public abstract class Character {
     }
 
     public void reduceLifePoints(int damage) {
+        healthPoints = getHealthPoints() - damage;
     }
 
     public int getLifePoints() {
         return healthPoints;
+    }
+
+    public int attack(){
+        return attackStrength;
     }
 }

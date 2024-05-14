@@ -1,6 +1,9 @@
 package dnd.Stuff;
 
-public class Shield extends DefensiveStuff {
+import dnd.GameDialog;
+import dnd.Personna.Character;
+
+public abstract class Shield extends DefensiveStuff {
     private String type;
     private int defenseValue;
     private String name;
@@ -15,5 +18,20 @@ public class Shield extends DefensiveStuff {
     @Override
     public String toString() {
         return "Name: " + name + ", type: " + type + ", Defense: " + defenseValue ;
+    }
+
+    @Override
+    public int getPosition() {
+        return 0;
+    }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
+
+    @Override
+    public String interaction(Character character, GameDialog dialog) {
+        return "";
     }
 }

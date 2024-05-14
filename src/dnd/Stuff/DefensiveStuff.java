@@ -1,5 +1,9 @@
 package dnd.Stuff;
 
+import dnd.BoardGame.Case;
+import dnd.GameDialog;
+import dnd.Personna.Character;
+
 public abstract class DefensiveStuff {
     protected String type;
     protected int defenseValue;
@@ -34,4 +38,10 @@ public abstract class DefensiveStuff {
         return "Name: " + name + ", type: " + type + ", Defense: " + defenseValue ;
 
     }
+
+    public abstract int getPosition();
+
+    public abstract String getDescription();
+
+    public abstract String interaction(Character character, GameDialog dialog);
 }

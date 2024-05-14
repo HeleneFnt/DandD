@@ -2,8 +2,6 @@ package dnd.Personna;
 
 
 public class Dragon extends Enemy {
-    private int lifePoints;
-    private int damage;
 
     public Dragon(String name){
         super(name, "dragon");
@@ -11,25 +9,23 @@ public class Dragon extends Enemy {
         this.damage = 4;
     }
 
-    public int getDamage() {
-        return damage;
-    }
-    @Override
-    public String interaction(Character character) {
-        if (character != null && character.getHealthPoints() > 0) {
-            int characterHealthPoints = character.getHealthPoints();
-            int damage = getDamage();
-            int remainingHealth = characterHealthPoints - damage;
 
-            if (remainingHealth > 0) {
-                character.reduceLifePoints(damage);
-                return "The mighty dragon attacks! You lose " + damage + " health points. Your remaining health: " + remainingHealth;
-            } else {
-                return "The mighty dragon attacks! You're dead !";
-            }
-        } else {
-            return "The mighty dragon attacks!";
-        }
-
-    }
+//    @Override
+//    public String interaction(Character character) {
+//        if (character != null && character.getHealthPoints() > 0) {
+//            int characterHealthPoints = character.getHealthPoints();
+//            int damage = getDamage();
+//            int remainingHealth = characterHealthPoints - damage;
+//
+//            if (remainingHealth > 0) {
+//                character.reduceLifePoints(damage);
+//                return "The mighty dragon attacks! You lose " + damage + " health points. Your remaining health: " + remainingHealth;
+//            } else {
+//                return "The mighty dragon attacks! You're dead !";
+//            }
+//        } else {
+//            return "The mighty dragon attacks!";
+//        }
+//
+//    }
 }
