@@ -4,6 +4,7 @@ package dnd;
 import dnd.BoardGame.*;
 import dnd.Personna.Character;
 import dnd.Personna.CharacterBeyondBoardException;
+import dnd.Personna.Enemy;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +21,6 @@ public class Game {
         this.hero = hero;
         this.currentPosition = 1; // Départ du joueur à la case 1
         this.board = board;
-
     }
 
     // méthode pour connaitre la case spécifique du héro
@@ -38,10 +38,14 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         Dice d1 = new D6();
 
-        while (currentPosition < FINAL_CASE) {
+        while (currentPosition < FINAL_CASE && hero.getHealthPoints() > 0) {
+            // Attente de l'entrée utilisateur pour lancer le dé
+            dialog.notifyThrowdice();
+
             // Lance le dé
             int diceRoll = d1.throwDice();
-            //int diceRoll = (int) (Math.random() * 6) + 1;
+            System.out.println("You rolled a " + diceRoll + "!");
+
             // Met à jour la position actuelle du joueur en fonction du résultat du dé
             currentPosition += diceRoll;
 
@@ -55,21 +59,18 @@ public class Game {
                 }
             }
 
-// Récupérer les informations sur la case actuelle à partir du plateau
+            // Récupérer les informations sur la case actuelle à partir du plateau
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
+                dialog.notifyMovePosition(currentPosition);
                 System.out.println("You are on: " + currentCase.getDescription());
                 String interactionResult = currentCase.interaction(hero, dialog);
                 System.out.println(interactionResult);
+
             } else {
                 System.out.println("Invalid current position!");
             }
 
-            // Affichage de la position du personnage
-            dialog.notifyMovePosition(currentPosition);
-
-            // Attente de l'entrée utilisateur pour lancer le dé
-            dialog.notifyThrowdice();
         }
 
         dialog.notifyEndGame();
@@ -78,6 +79,7 @@ public class Game {
         switch (restartChoice) {
             case 1:
                 // Redémarrer une nouvelle partie
+                currentPosition = 1; // Réinitialiser la position du joueur
                 playTurn(); // Appel récursif de la méthode playTurn() pour démarrer une nouvelle partie
                 break;
             case 2:

@@ -20,7 +20,7 @@ public class Lightning extends Spell implements Case {
 
     @Override
     public String getDescription() {
-        return "";
+        return "Lightning";
     }
 
     @Override

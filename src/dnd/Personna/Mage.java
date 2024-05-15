@@ -1,34 +1,14 @@
 package dnd.Personna;
 
-import dnd.Stuff.Spell;
-
+import dnd.Stuff.OffensiveStuff;
 import java.util.Random;
 
 public class Mage extends Character {
-    private int healthPoints;
-    private int attackStrength;
-    private Spell spell;
 
     public Mage(String name) {
         super(name, "mage");
         this.healthPoints = (int) (Math.random() * (7 - 3)) + 3;
         this.attackStrength = (int) (Math.random() * (16 - 8)) + 8;
-    }
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public int getAttackStrength() {
-        return attackStrength;
-    }
-
-    public void setAttackStrength(int attackStrength) {
-        this.attackStrength = attackStrength;
     }
 
     public String scream() {
@@ -58,12 +38,12 @@ public class Mage extends Character {
         }
     }
 
-    public void learnSpell(Spell spell) {
-        this.spell= spell;
+    public void learnSpell(OffensiveStuff spell) {
+        this.offensiveStuff = spell;
     }
 
-    public Spell getSpell() {
-        return spell;
+    public OffensiveStuff getSpell() {
+        return offensiveStuff;
     }
 
 }

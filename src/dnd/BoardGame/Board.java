@@ -3,8 +3,6 @@ package dnd.BoardGame;
 import dnd.Personna.Gobelin;
 import dnd.Personna.Wizard;
 import dnd.Personna.Dragon;
-import dnd.Stuff.Club;
-import dnd.Stuff.Lightning;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,24 +18,24 @@ public class Board {
     private void initializeCases() {
         // Création de la liste temporaire contenant tous les types de cases avec leur quantité respective
         ArrayList<Case> tempCases = new ArrayList<>();
-        tempCases.add(new Lightning(1, "Lightning"));
-        tempCases.add(new Club(2, "Club"));
+        tempCases.add(new BonusWeaponCase(1, "You found a weapon!"));
+        tempCases.add(new BonusWeaponCase(2, "You found a weapon!"));
         tempCases.add(new Gobelin(3, "Gobelin"));
-        tempCases.add(new Lightning(4, "Lightning"));
-        tempCases.add(new Club(5, "Club"));
+        tempCases.add(new BonusWeaponCase(4, "You found a weapon!"));
+        tempCases.add(new BonusWeaponCase(5, "You found a weapon!"));
         tempCases.add(new Gobelin(6, "Gobelin"));
         tempCases.add(new StandardHealthPotion(7, "Standard Health Potion"));
-        tempCases.add(new Lightning(8, "Lightning"));
+        tempCases.add(new BonusWeaponCase(8, "You found a weapon!"));
         tempCases.add(new Gobelin(9, "Gobelin"));
         tempCases.add(new Wizard(10, "Wizard"));
-        tempCases.add(new Club(11, "Club"));
+        tempCases.add(new BonusWeaponCase(11, "You found a weapon!"));
         tempCases.add(new Gobelin(12, "Gobelin"));
         tempCases.add(new StandardHealthPotion(13, "Standard Health Potion"));
         tempCases.add(new EmptyCase(14, "No effect"));
         tempCases.add(new Gobelin(15, "Gobelin"));
         tempCases.add(new EmptyCase(16, "No effect"));
         tempCases.add(new Wizard(17, "Wizard"));
-        tempCases.add(new Club(18, "Club"));
+        tempCases.add(new BonusWeaponCase(18, "You found a weapon!"));
         tempCases.add(new BonusWeaponCase(19, "Bonus Weapon"));
         tempCases.add(new Gobelin(20, "Gobelin"));
         tempCases.add(new Wizard(21, "Wizard"));

@@ -11,7 +11,7 @@ public class StandardHealthPotion implements Case {
     public StandardHealthPotion(int position, String description) {
         this.position = position;
         this.description = description;
-        this.healingAmount = healingAmount;
+        this.healingAmount = 2;
     }
 
     public int getPosition() {
@@ -24,8 +24,14 @@ public class StandardHealthPotion implements Case {
 
     @Override
     public String interaction(Character character, GameDialog dialog) {
-        character.heal(healingAmount);
-        return "You found a Standard Health Potion and restored " + healingAmount + " health points!";
-    }
+        int previousHealth = character.getHealthPoints(); // Obtenez les points de vie avant la guérison
+        character.heal(healingAmount); // Guérissez le personnage
+        int totalHealth = previousHealth + healingAmount; // Obtenez les points de vie après la guérison
 
+        // Construisez le message en utilisant les points de vie restaurés et totaux
+        String message = "You found a Standard Health Potion and restored " + healingAmount + " health points! " +
+                "Your total health is now " + totalHealth + " points (+" + (healingAmount) + ").";
+        dialog.notifyMessage(message); // Afficher le message dans le dialogue du jeu
+        return message; // Renvoyer le message pour une utilisation éventuelle
+    }
 }

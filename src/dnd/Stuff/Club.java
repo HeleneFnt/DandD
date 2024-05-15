@@ -1,30 +1,19 @@
 package dnd.Stuff;
 
-import dnd.BoardGame.Case;
-import dnd.GameDialog;
-import dnd.Personna.Character;
+public class Club extends Weapon {
+    private final int attackStrength;
 
-public class Club extends Weapon implements Case {
     public Club() {
-        super ("Club",3, "Sword");
-    }
-
-    public Club(int i, String club) {
-        super();
+        super("Club", 3, "sturdy wooden club.");
+        this.attackStrength = 3;
     }
 
     @Override
-    public int getPosition() {
-        return 0;
+    public int getAttackStrength() {
+        return this.attackStrength;
     }
 
-    @Override
     public String getDescription() {
-        return "";
-    }
-
-    @Override
-    public String interaction(Character character, GameDialog dialog) {
-        return "";
+        return "Blunt";
     }
 }

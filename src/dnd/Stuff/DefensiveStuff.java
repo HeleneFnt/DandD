@@ -1,6 +1,5 @@
 package dnd.Stuff;
 
-import dnd.BoardGame.Case;
 import dnd.GameDialog;
 import dnd.Personna.Character;
 

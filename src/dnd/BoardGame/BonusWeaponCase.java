@@ -31,31 +31,39 @@ public class BonusWeaponCase implements Case {
         int bonusType = random.nextInt(2);
 
         if (bonusType == 0 && character instanceof Warrior) {
-            return applyWeaponBonus((Warrior) character);
+            return applyWeaponBonus((Warrior) character, dialog);
         } else if (bonusType == 1 && character instanceof Mage) {
-            return applySpellBonus((Mage) character);
+            return applySpellBonus((Mage) character, dialog);
         } else {
             return "No bonus applied.";
         }
     }
 
-    private String applyWeaponBonus(Warrior warrior) {
+    private String applyWeaponBonus(Warrior warrior, GameDialog dialog) {
         Weapon newWeapon = getRandomWeapon();
         if (warrior.getWeapon() == null || newWeapon.getAttackStrength() > warrior.getWeapon().getAttackStrength()) {
             warrior.equipWeapon(newWeapon);
-            return "You wielded a " + newWeapon.getName() + "! Your damage: " + warrior.getAttackStrength();
+            String message = "You wielded a " + newWeapon.getName() + "! Your damage increased by " + newWeapon.getAttackStrength() + " points.";
+            dialog.notifyMessage(message);
+            return message;
         } else {
-            return "No better weapon found.";
+            String message = "No better weapon found.";
+            dialog.notifyMessage(message);
+            return message;
         }
     }
 
-    private String applySpellBonus(Mage mage) {
+    private String applySpellBonus(Mage mage, GameDialog dialog) {
         Spell newSpell = getRandomSpell();
         if (mage.getSpell() == null || newSpell.getAttackStrength() > mage.getSpell().getAttackStrength()) {
             mage.learnSpell(newSpell);
-            return "You learned " + newSpell.getName() + "! Your damage: " + mage.getAttackStrength();
+            String message = "You learned " + newSpell.getName() + "! Your damage increased by " + newSpell.getAttackStrength() + " points.";
+            dialog.notifyMessage(message);
+            return message;
         } else {
-            return "No better spell found.";
+            String message = "No better spell found.";
+            dialog.notifyMessage(message);
+            return message;
         }
     }
 

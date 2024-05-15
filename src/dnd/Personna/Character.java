@@ -59,9 +59,6 @@ public abstract class Character {
 
     public abstract String scream();
 
-
-    public abstract void increaseAttack();
-
     public String interaction() {
         return null;
     }
@@ -69,11 +66,18 @@ public abstract class Character {
 
     // Méthode pour l'utilisation de la potion de vie
     public void heal(int amount) {
-        healthPoints += amount;
+        this.healthPoints += amount;
     }
 
     public void reduceLifePoints(int damage) {
-        healthPoints = getHealthPoints() - damage;
+        this.healthPoints -= damage;
+        if (this.healthPoints < 0) {
+            this.healthPoints = 0;
+        }
+    }
+
+    public void increaseAttackStrength(int amount) {
+        this.attackStrength += amount;
     }
 
 }

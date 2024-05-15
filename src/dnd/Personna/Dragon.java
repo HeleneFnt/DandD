@@ -3,15 +3,11 @@ package dnd.Personna;
 
 public class Dragon extends Enemy {
 
-    public Dragon(String name, int position, String description){
+    public Dragon(int position, String name){
         super(name, "dragon");
-        this.lifePoints = 6;
+        this.lifePoints = 50;
         this.damage = 4;
         this.position = position;
-        this.description = description;
     }
 
-    public Dragon(int i, String dragon) {
-        super();
-    }
 }

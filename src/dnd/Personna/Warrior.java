@@ -1,34 +1,13 @@
 package dnd.Personna;
 
-import dnd.Stuff.Weapon;
-
+import dnd.Stuff.OffensiveStuff;
 import java.util.Random;
-
 public class Warrior extends Character {
-    private int healthPoints;
-    private int attackStrength;
-    private Weapon weapon;
 
     public Warrior(String name) {
         super(name, "warrior");
         this.healthPoints = (int) (Math.random() * (11 - 4) + 5);
         this.attackStrength = (int) (Math.random() * (11 - 4) + 5);
-    }
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public int getAttackStrength() {
-        return attackStrength;
-    }
-
-    public void setAttackStrength(int attackStrength) {
-        this.attackStrength = attackStrength;
     }
 
     public String scream() {
@@ -58,11 +37,11 @@ public class Warrior extends Character {
         }
     }
 
-    public Weapon getWeapon() {
-        return weapon;
+    public OffensiveStuff getWeapon() {
+        return offensiveStuff;
     }
 
-    public void equipWeapon(Weapon newWeapon) {
-        this.weapon = newWeapon;
+    public void equipWeapon(OffensiveStuff newWeapon) {
+        this.offensiveStuff = newWeapon;
     }
 }

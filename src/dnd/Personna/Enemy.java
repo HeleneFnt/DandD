@@ -9,7 +9,7 @@ public abstract class Enemy implements Case {
     protected int lifePoints;
     protected int damage;
     protected int position;
-    protected String description;
+
 
 
     // Constructeur d'ennemi  avec nom et type
@@ -31,6 +31,10 @@ public abstract class Enemy implements Case {
         this.name = name;
     }
 
+    public String getType() {
+        return type;
+    }
+
     @Override
     public int getPosition() {
         return 0;
@@ -43,20 +47,33 @@ public abstract class Enemy implements Case {
 
     @Override
     public String interaction(Character character, GameDialog dialog) {
-        while (true) {
+        dialog.notifyPlayerInfo(character.getName(), character.getHealthPoints(), character.getAttackStrength());
+        dialog.notifyEnemyInfo(name, lifePoints, damage);
+        while (lifePoints > 0 && character.getHealthPoints() > 0) {
             // Notification de l'attaque du héros
+
             dialog.notifyHeroAttack(character.getName(), name, character.getAttackStrength());
             lifePoints -= character.getAttackStrength();
+            dialog.notifyEnemyLifePoints(lifePoints, name);
+
+            // Vérifier si l'ennemi est vaincu
             if (lifePoints <= 0) {
-                return "Enemy defeats";
+                return "You won ! Enemy defeats";
             }
-            // Notification de l'attaque de l'ennemi
+
+            // L'ennemi attaque si le personnage est toujours en vie
             dialog.notifyEnemyAttack(name, damage);
             character.reduceLifePoints(damage);
+            dialog.notifyRemainingHealth(character.getHealthPoints());
+
+            // Vérifier si le personnage est vaincu
             if (character.getHealthPoints() <= 0) {
-                return "Hero defeats";
+                return "You're dead !";
             }
         }
+
+        // Si l'ennemi ou le personnage n'a plus de points de vie, on termine l'interaction
+        return null;
     }
 
 }

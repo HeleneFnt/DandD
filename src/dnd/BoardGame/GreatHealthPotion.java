@@ -11,7 +11,7 @@ public class GreatHealthPotion implements Case {
     public GreatHealthPotion(int position, String description) {
         this.position = position;
         this.description = description;
-        this.healingAmount = healingAmount;
+        this.healingAmount = 5;
     }
 
     public int getPosition() {

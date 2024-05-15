@@ -15,7 +15,7 @@ public class EmptyCase implements Case {
     }
 
     public String getDescription() {
-        return "No Effect";
+        return "a case with no effect";
     }
 
     public int getPosition() {
