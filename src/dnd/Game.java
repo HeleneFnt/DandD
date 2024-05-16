@@ -81,6 +81,7 @@ public class Game {
                 // Redémarrer une nouvelle partie
                 currentPosition = 1; // Réinitialiser la position du joueur
                 playTurn(); // Appel récursif de la méthode playTurn() pour démarrer une nouvelle partie
+                dialog.notifyPlayerInfo(hero.getName(), hero.getHealthPoints(), hero.getAttackStrength());
                 break;
             case 2:
                 // Quitter le jeu

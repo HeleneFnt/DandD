@@ -31,21 +31,21 @@ public class GameDialog {
     public void notifyEndGame() {
         System.out.println("Game over! \uD83C\uDFC1 What would you like to do next?");
         System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '1' to start a new game \uD83D\uDCAB ");
-        System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '2' to quit the game \uD83D\uDC4B ");
+        System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '2' to quit the game ╰┈➤\uD83D\uDEAA ");
     }
 
     public void notifyHeroAttack(String playerName, String enemyName, int damage, String bonusSource) {
         if (bonusSource != null && !bonusSource.isEmpty()) {
-            System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damages with an increased attack from " + bonusSource + ".");
+            System.out.println(playerName + " attacked  ⚔\uFE0F " + enemyName + " dealing " + damage + " damages with an increased attack from " + bonusSource + ".");
         } else {
-            System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damages.");
+            System.out.println(playerName + " attacked ⚔\uFE0F " + enemyName + " dealing " + damage + " damages.");
         }
     }
 
 
 
     public void notifyEnemyAttack(String name, int damage) {
-        System.out.println(name + " attacked, dealing " + damage + " damage(s).");
+        System.out.println(name + " attacked ⚔\uFE0F, dealing " + damage + " damage(s).");
     }
 
     public void notifyMessage(String message) {

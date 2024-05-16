@@ -41,9 +41,11 @@ public class BonusWeaponCase implements Case {
 
     private String applyWeaponBonus(Warrior warrior, GameDialog dialog) {
         Weapon newWeapon = getRandomWeapon();
+        int previousAttackStrength = warrior.getAttackStrength(); // Force d'attaque de base du guerrier
+
         if (warrior.getWeapon() == null || newWeapon.getAttackStrength() > warrior.getWeapon().getAttackStrength()) {
             warrior.equipWeapon(newWeapon);
-            int totalAttackStrength = warrior.getAttackStrength(); // Utiliser la force d'attaque actuelle du guerrier
+            int totalAttackStrength = previousAttackStrength + newWeapon.getAttackStrength(); // Force d'attaque totale du guerrier
             String message = "You wielded a " + newWeapon.getName() + "! Your damage increased by " +
                     "(+" + newWeapon.getAttackStrength() + "). Your total attack strength is now " + totalAttackStrength + " points.";
             dialog.notifyMessage(message);
@@ -55,13 +57,16 @@ public class BonusWeaponCase implements Case {
         }
     }
 
-
-
     private String applySpellBonus(Mage mage, GameDialog dialog) {
         Spell newSpell = getRandomSpell();
-        if (mage.getSpell() == null || newSpell.getAttackStrength() > mage.getSpell().getAttackStrength()) {
+        OffensiveStuff currentSpell = mage.getSpell();
+        int previousAttackStrength = mage.getAttackStrength(); // Force d'attaque de base du mage
+
+        if (currentSpell == null || newSpell.getAttackStrength() > currentSpell.getAttackStrength()) {
             mage.learnSpell(newSpell);
-            String message = "You learned " + newSpell.getName() + "! Your damage increased by " + "(+"+newSpell.getAttackStrength() + ")";
+            int totalAttackStrength = previousAttackStrength + newSpell.getAttackStrength(); // Force d'attaque totale du mage
+            String message = "You learned " + newSpell.getName() + "! Your damage increased by " +
+                    "(+" + newSpell.getAttackStrength() + "). Your total attack strength is now " + totalAttackStrength + " points.";
             dialog.notifyMessage(message);
             return message;
         } else {

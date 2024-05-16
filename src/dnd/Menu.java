@@ -44,7 +44,7 @@ public class Menu {
         String type;
 
         while (true) {
-            System.out.println("You have to choose between 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' ⚔\uFE0F ...");
+            System.out.println("You have to choose between 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' \uD83E\uDD77\uD83C\uDFFB ...");
             System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Please add the character type: ");
             System.out.println("Tape '2' to exit the game \uD83D\uDC4B");
             type = scanner.nextLine();
@@ -53,7 +53,7 @@ public class Menu {
                 System.exit(0);
             }
             if (!type.equals("mage") && !type.equals("warrior")) {
-                System.out.println("Invalid type! \uD83D\uDEAB Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'⚔\uFE0F .");
+                System.out.println("Invalid type! \uD83D\uDEAB Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'\uD83E\uDD77\uD83C\uDFFB .");
                 continue;
             }
 
@@ -121,11 +121,11 @@ public class Menu {
             System.out.println("Attack Strength: " + mage.getAttackStrength());
         } else if (character instanceof Warrior) {
             Warrior warrior = (Warrior) character;
-            System.out.println("Your are the dangerous warrior named " + warrior.getName() +"!");
+            System.out.println("Your are the dangerous warrior \uD83E\uDD77\uD83C\uDFFB  named " + warrior.getName() +"!");
             System.out.println("Warrior Health Points: " + warrior.getHealthPoints());
             System.out.println("Warrior Attack Strength: " + warrior.getAttackStrength());
         } else {
-            System.out.println("The character is not a Mage or a Warrior.");
+            System.out.println("The character is not a Mage or a Warrior \uD83E\uDD77\uD83C\uDFFB.");
         }
     }
     private void modifyCharacter() {
@@ -147,10 +147,10 @@ public class Menu {
                     displayCharacterSpecifics(fictionalCharacter);
                     break;
                 case 2:
-                    System.out.println("Enter new type, 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' ⚔\uFE0F ...: ");
+                    System.out.println("Enter new type, 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' \uD83E\uDD77\uD83C\uDFFB ...: ");
                     String newType = scanner.nextLine();
                     if (!newType.equals("mage") && !newType.equals("warrior")) {
-                        System.out.println("Invalid type! Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'⚔\uFE0F.");
+                        System.out.println("Invalid type! Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'\uD83E\uDD77\uD83C\uDFFB.");
                     } else {
                         fictionalCharacter.setType(newType);
                         System.out.println(colors.colored(randomColor, "Character type updated successfully! \uD83D\uDCAB "));

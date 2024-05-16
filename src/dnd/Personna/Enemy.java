@@ -104,7 +104,7 @@ public abstract class Enemy implements Case {
 
             // Vérifier si l'ennemi est vaincu
             if (lifePoints <= 0) {
-                return name + " is defeated!";
+                return name + " is defeated! Remaining health: " + character.getHealthPoints();
             }
 
             // L'ennemi attaque si le personnage est toujours en vie
@@ -122,4 +122,3 @@ public abstract class Enemy implements Case {
         return null;
     }
 }
-

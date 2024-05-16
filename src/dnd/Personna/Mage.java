@@ -1,6 +1,8 @@
 package dnd.Personna;
 
 import dnd.Stuff.OffensiveStuff;
+import dnd.Stuff.Spell;
+
 import java.util.Random;
 
 public class Mage extends Character {
@@ -46,5 +48,6 @@ public class Mage extends Character {
     public OffensiveStuff getSpell() {
         return offensiveStuff;
     }
+
 
 }

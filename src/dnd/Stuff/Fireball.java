@@ -7,6 +7,6 @@ public class Fireball extends Spell {
 
 
     public String getDescription() {
-        return "Fireball";
+        return "Fireball \uD83D\uDD25 ";
     }
 }
