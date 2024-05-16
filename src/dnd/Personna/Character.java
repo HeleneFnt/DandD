@@ -11,6 +11,7 @@ public abstract class Character {
     protected int attackStrength;
     protected OffensiveStuff offensiveStuff;
     protected DefensiveStuff defensiveStuff;
+    protected int position;
 
     // Constructeur de personnages sans paramètres
     public Character() {
@@ -76,4 +77,11 @@ public abstract class Character {
         }
     }
 
+    public int getPosition() {
+    return position;
+    }
+
+    public void setPosition(int newPosition) {
+        this.position = newPosition;
+    }
 }

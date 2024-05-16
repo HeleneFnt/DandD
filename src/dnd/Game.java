@@ -33,7 +33,6 @@ public class Game {
         }
     }
 
-    // Méthode pour jouer un tour
     public void playTurn() {
         Scanner scanner = new Scanner(System.in);
         Dice d1 = new D6();
@@ -46,11 +45,16 @@ public class Game {
             int diceRoll = d1.throwDice();
             System.out.println("You rolled a " + diceRoll + "!");
 
-            // Met à jour la position actuelle du joueur en fonction du résultat du dé
-            currentPosition += diceRoll;
+            // Calculer la nouvelle position du joueur en fonction du résultat du dé
+            int newPosition = currentPosition + diceRoll;
+
+            // Vérifie si la nouvelle position dépasse la case finale
+            if (newPosition > FINAL_CASE) {
+                newPosition = FINAL_CASE; // Réinitialise la position à la case finale
+            }
 
             // Vérifie si le joueur est hors du plateau
-            if (currentPosition > FINAL_CASE) {
+            if (newPosition > FINAL_CASE) {
                 try {
                     throw new CharacterBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
                 } catch (CharacterBeyondBoardException e) {
@@ -62,7 +66,7 @@ public class Game {
             // Récupérer les informations sur la case actuelle à partir du plateau
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
-                dialog.notifyMovePosition(currentPosition);
+                dialog.notifyMovePosition(newPosition);
                 System.out.println(currentCase.getDescription());
                 String interactionResult = currentCase.interaction(hero, dialog);
                 System.out.println(interactionResult);
@@ -71,6 +75,8 @@ public class Game {
                 System.out.println("Invalid current position!");
             }
 
+            // Mettre à jour la position actuelle du joueur
+            currentPosition = newPosition;
         }
 
         dialog.notifyEndGame();

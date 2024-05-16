@@ -76,4 +76,12 @@ public class GameDialog {
     }
 
 
+    public String askForChoice() {
+        System.out.println("Tape 'A' to Attack or Tape 'F' to Flee?");
+        return scanner.nextLine().trim(); // Récupère la saisie de l'utilisateur et la retourne après suppression des espaces inutiles
+    }
+
+    public void notifyFlee(String Playername, int distance) {
+    System.out.println(Playername + "'s flee: " + distance + "case(s)");
+    }
 }

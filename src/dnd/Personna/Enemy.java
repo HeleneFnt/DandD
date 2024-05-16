@@ -72,14 +72,28 @@ public abstract class Enemy implements Case {
     public String interaction(Character character, GameDialog dialog) {
         dialog.notifyPlayerInfo(character.getName(), character.getHealthPoints(), character.getAttackStrength());
         dialog.notifyEnemyInfo(name, lifePoints, damage);
+        // Demander au joueur s'il veut attaquer ou fuir
+        String choice = dialog.askForChoice();
+
+        if (choice.equalsIgnoreCase("f")) {
+            // Fuite : reculer d'un nombre de cases aléatoire entre 1 et 6
+            int distance = (int) (Math.random() * 6) + 1;
+            dialog.notifyFlee(character.getName(), distance);
+            int newPosition = character.getPosition() - distance;
+            character.setPosition(newPosition);
+            // Afficher la nouvelle position du personnage
+            dialog.notifyMovePosition(newPosition);
+            // Terminer l'interaction
+            return "!";
+        }
+
 
         while (lifePoints > 0 && character.getHealthPoints() > 0) {
-            // Déterminer la force d'attaque totale du héros en prenant en compte les bonus
+            // Tour du personnage
             int baseAttackStrength = character.getAttackStrength();
             int bonusAttackStrength = 0;
             String bonusSource = "";
 
-            // Si le héros a un bonus d'attaque (ex : arme ou sort)
             if (character instanceof Warrior) {
                 Warrior warrior = (Warrior) character;
                 if (warrior.getWeapon() != null) {
@@ -97,25 +111,25 @@ public abstract class Enemy implements Case {
 
             int totalAttackStrength = baseAttackStrength + bonusAttackStrength;
 
-            // Notification de l'attaque du héros
             dialog.notifyHeroAttack(character.getName(), name, totalAttackStrength, bonusSource);
             lifePoints -= totalAttackStrength;
             dialog.notifyEnemyLifePoints(lifePoints, name);
 
-            // Vérifier si l'ennemi est vaincu
             if (lifePoints <= 0) {
                 return name + " is defeated! Remaining health: " + character.getHealthPoints();
             }
 
-            // L'ennemi attaque si le personnage est toujours en vie
+            // Tour de l'ennemi
+            dialog.notifyThrowdice(); // Demande au joueur de lancer le dé
+            int diceRoll = (int) (Math.random() * 6) + 1; // Jet de dé aléatoire entre 1 et 6
             dialog.notifyEnemyAttack(name, damage);
             character.reduceLifePoints(damage);
             dialog.notifyRemainingHealth(character.getHealthPoints());
 
-            // Vérifier si le personnage est vaincu
             if (character.getHealthPoints() <= 0) {
                 return "You're dead!";
             }
+
         }
 
         // Si l'ennemi ou le personnage n'a plus de points de vie, on termine l'interaction
