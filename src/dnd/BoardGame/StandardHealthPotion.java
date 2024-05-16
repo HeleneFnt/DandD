@@ -30,7 +30,7 @@ public class StandardHealthPotion implements Case {
 
         // Construisez le message en utilisant les points de vie restaurés et totaux
         String message = "You found a Standard Health Potion and restored " + healingAmount + " health points! " +
-                "Your total health is now " + totalHealth + " points (+" + (healingAmount) + ").";
+                "Your total health is now " + totalHealth + " points.";
         dialog.notifyMessage(message); // Afficher le message dans le dialogue du jeu
         return message; // Renvoyer le message pour une utilisation éventuelle
     }

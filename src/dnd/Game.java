@@ -63,7 +63,7 @@ public class Game {
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
                 dialog.notifyMovePosition(currentPosition);
-                System.out.println("You are on: " + currentCase.getDescription());
+                System.out.println(currentCase.getDescription());
                 String interactionResult = currentCase.interaction(hero, dialog);
                 System.out.println(interactionResult);
 

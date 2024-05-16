@@ -76,8 +76,4 @@ public abstract class Character {
         }
     }
 
-    public void increaseAttackStrength(int amount) {
-        this.attackStrength += amount;
-    }
-
 }

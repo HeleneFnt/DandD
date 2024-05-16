@@ -34,9 +34,14 @@ public class GameDialog {
         System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Tape '2' to quit the game \uD83D\uDC4B ");
     }
 
-    public void notifyHeroAttack(String playerName, String enemyName, int damage) {
-        System.out.println(playerName + " attacked a " + enemyName + " and dealing " + damage + " damages.");
+    public void notifyHeroAttack(String playerName, String enemyName, int damage, String bonusSource) {
+        if (bonusSource != null && !bonusSource.isEmpty()) {
+            System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damages with an increased attack from " + bonusSource + ".");
+        } else {
+            System.out.println(playerName + " attacked " + enemyName + " dealing " + damage + " damages.");
+        }
     }
+
 
 
     public void notifyEnemyAttack(String name, int damage) {
@@ -47,15 +52,13 @@ public class GameDialog {
 
     }
     public void notifyEnemyInfo(String enemyName, int lifePoints, int attackStrength) {
-        System.out.println("Enemy: " + enemyName);
-        System.out.println("HP: " + lifePoints);
-        System.out.println("Attack Strength: " + attackStrength);
+        System.out.println(enemyName + "'s HP: " + lifePoints);
+        System.out.println(enemyName + "'s attack Strength: " + attackStrength);
     }
 
     public void notifyPlayerInfo(String playerName, int healthPoints, int attackStrength) {
-        System.out.println("Your Player: " + playerName);
-        System.out.println("HP: " + healthPoints);
-        System.out.println("Attack Strength: " + attackStrength);
+        System.out.println(playerName + "'s HP: " + healthPoints);
+        System.out.println(playerName + "'s attack Strength: " + attackStrength);
     }
 
 
@@ -68,7 +71,7 @@ public class GameDialog {
 
     public void notifyEnemyLifePoints(int lifePoints, String enemyName) {
         if (lifePoints > 0) {
-            System.out.println(enemyName + " HP: " + lifePoints);
+            System.out.println(enemyName + "'s HP: " + lifePoints);
         }
     }
 

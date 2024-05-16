@@ -43,7 +43,9 @@ public class BonusWeaponCase implements Case {
         Weapon newWeapon = getRandomWeapon();
         if (warrior.getWeapon() == null || newWeapon.getAttackStrength() > warrior.getWeapon().getAttackStrength()) {
             warrior.equipWeapon(newWeapon);
-            String message = "You wielded a " + newWeapon.getName() + "! Your damage increased by " + newWeapon.getAttackStrength() + " points.";
+            int totalAttackStrength = warrior.getAttackStrength(); // Utiliser la force d'attaque actuelle du guerrier
+            String message = "You wielded a " + newWeapon.getName() + "! Your damage increased by " +
+                    "(+" + newWeapon.getAttackStrength() + "). Your total attack strength is now " + totalAttackStrength + " points.";
             dialog.notifyMessage(message);
             return message;
         } else {
@@ -53,11 +55,13 @@ public class BonusWeaponCase implements Case {
         }
     }
 
+
+
     private String applySpellBonus(Mage mage, GameDialog dialog) {
         Spell newSpell = getRandomSpell();
         if (mage.getSpell() == null || newSpell.getAttackStrength() > mage.getSpell().getAttackStrength()) {
             mage.learnSpell(newSpell);
-            String message = "You learned " + newSpell.getName() + "! Your damage increased by " + newSpell.getAttackStrength() + " points.";
+            String message = "You learned " + newSpell.getName() + "! Your damage increased by " + "(+"+newSpell.getAttackStrength() + ")";
             dialog.notifyMessage(message);
             return message;
         } else {
