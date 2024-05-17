@@ -77,11 +77,13 @@ public abstract class Character {
         }
     }
 
-    public int getPosition() {
-    return position;
+public int getPosition() {
+        return position;
     }
 
-    public void setPosition(int newPosition) {
-        this.position = newPosition;
+public void setPosition(int position) {
+        this.position = position;
     }
+
+
 }

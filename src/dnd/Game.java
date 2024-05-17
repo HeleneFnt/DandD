@@ -38,22 +38,16 @@ public class Game {
         Dice d1 = new D6();
 
         while (currentPosition < FINAL_CASE && hero.getHealthPoints() > 0) {
-            // Attente de l'entrée utilisateur pour lancer le dé
-            dialog.notifyThrowdice();
+            dialog.notifyThrowDice();
 
-            // Lance le dé
             int diceRoll = d1.throwDice();
             System.out.println("You rolled a " + diceRoll + "!");
 
-            // Calculer la nouvelle position du joueur en fonction du résultat du dé
             int newPosition = currentPosition + diceRoll;
-
-            // Vérifie si la nouvelle position dépasse la case finale
             if (newPosition > FINAL_CASE) {
-                newPosition = FINAL_CASE; // Réinitialise la position à la case finale
+                newPosition = FINAL_CASE;
             }
 
-            // Vérifie si le joueur est hors du plateau
             if (newPosition > FINAL_CASE) {
                 try {
                     throw new CharacterBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
@@ -63,7 +57,6 @@ public class Game {
                 }
             }
 
-            // Récupérer les informations sur la case actuelle à partir du plateau
             Case currentCase = getCurrentCase();
             if (currentCase != null) {
                 dialog.notifyMovePosition(newPosition);
@@ -71,11 +64,15 @@ public class Game {
                 String interactionResult = currentCase.interaction(hero, dialog);
                 System.out.println(interactionResult);
 
+                if ("Flee".equals(interactionResult)) {
+                    newPosition =  currentPosition - d1.throwDice();
+                    dialog.notifyMovePosition(newPosition);
+                }
+
             } else {
                 System.out.println("Invalid current position!");
             }
 
-            // Mettre à jour la position actuelle du joueur
             currentPosition = newPosition;
         }
 
@@ -84,17 +81,16 @@ public class Game {
         int restartChoice = scanner.nextInt();
         switch (restartChoice) {
             case 1:
-                // Redémarrer une nouvelle partie
-                currentPosition = 1; // Réinitialiser la position du joueur
-                playTurn(); // Appel récursif de la méthode playTurn() pour démarrer une nouvelle partie
+                currentPosition = 1;
+                playTurn();
                 dialog.notifyPlayerInfo(hero.getName(), hero.getHealthPoints(), hero.getAttackStrength());
                 break;
             case 2:
-                // Quitter le jeu
                 System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
                 break;
             default:
                 System.out.println("Invalid choice! \uD83D\uDEAB");
         }
     }
+
 }
