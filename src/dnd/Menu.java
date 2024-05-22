@@ -13,8 +13,7 @@ public class Menu {
     private final Color color = new Color();
     private final Color.Colors colors = color.new Colors();
     private String randomColor;
-    private GameDialog dialog = new GameDialog(scanner);
-
+    private final GameDialog dialog = new GameDialog(scanner);
 
     public void startMenu() {
         randomColor = colors.randomColor();
@@ -27,7 +26,11 @@ public class Menu {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    createCharacter();
+                    try {
+                        createCharacter();
+                    } catch (CloneNotSupportedException e) {
+                        System.out.println("Error creating character: " + e.getMessage());
+                    }
                     break;
                 case 2:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B ");
@@ -38,7 +41,8 @@ public class Menu {
             }
         }
     }
-    private void createCharacter() {
+
+    private void createCharacter() throws CloneNotSupportedException {
         System.out.println("Creating a fictional character... \uD83E\uDD16 ");
         String name;
         String type;
@@ -89,7 +93,7 @@ public class Menu {
                 case "y":
                     System.out.println("Starting the game... First throw \uD83C\uDFB2");
                     System.out.println(fictionalCharacter.scream());
-                    Board board = new Board() ;
+                    Board board = new Board();
                     new Game(dialog, fictionalCharacter, board).playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
@@ -113,21 +117,23 @@ public class Menu {
             }
         }
     }
+
     private void displayCharacterSpecifics(Character character) {
         if (character instanceof Mage) {
             Mage mage = (Mage) character;
-            System.out.println("Your are a famous mage named " + mage.getName() +"!");
+            System.out.println("You are a famous mage named " + mage.getName() + "!");
             System.out.println("Health Points: " + mage.getHealthPoints());
             System.out.println("Attack Strength: " + mage.getAttackStrength());
         } else if (character instanceof Warrior) {
             Warrior warrior = (Warrior) character;
-            System.out.println("Your are the dangerous warrior \uD83E\uDD77\uD83C\uDFFB  named " + warrior.getName() +"!");
+            System.out.println("You are the dangerous warrior \uD83E\uDD77\uD83C\uDFFB named " + warrior.getName() + "!");
             System.out.println("Warrior Health Points: " + warrior.getHealthPoints());
             System.out.println("Warrior Attack Strength: " + warrior.getAttackStrength());
         } else {
             System.out.println("The character is not a Mage or a Warrior \uD83E\uDD77\uD83C\uDFFB.");
         }
     }
+
     private void modifyCharacter() {
         System.out.println("Modifying character...");
         while (true) {
@@ -152,7 +158,11 @@ public class Menu {
                     if (!newType.equals("mage") && !newType.equals("warrior")) {
                         System.out.println("Invalid type! Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'\uD83E\uDD77\uD83C\uDFFB.");
                     } else {
-                        fictionalCharacter.setType(newType);
+                        if (newType.equals("mage")) {
+                            fictionalCharacter = new Mage(fictionalCharacter.getName());
+                        } else {
+                            fictionalCharacter = new Warrior(fictionalCharacter.getName());
+                        }
                         System.out.println(colors.colored(randomColor, "Character type updated successfully! \uD83D\uDCAB "));
                         System.out.println(colors.colored(randomColor, "Your informations:"));
                         displayCharacterSpecifics(fictionalCharacter);
@@ -163,18 +173,18 @@ public class Menu {
                     System.out.println(colors.colored(randomColor, "Your informations:"));
                     displayCharacterSpecifics(fictionalCharacter);
                     Board board = new Board();
-                    new Game(dialog, fictionalCharacter, board).playTurn(); // Commencer le jeu
+                    try {
+                        new Game(dialog, fictionalCharacter, board).playTurn(); // Commencer le jeu
+                    } catch (Exception e) {
+                        System.out.println("Error starting the game: " + e.getMessage());
+                    }
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
                     System.exit(0);
+                    break;
                 default:
-                    System.out.println("Invalid choice! \uD83D\uDEAB ");
-            }
-
-            if (fictionalCharacter.getType() == null || fictionalCharacter.getName() == null) {
-                System.out.println("Invalid character \uD83D\uDEAB ! Please ensure that both type and name are set. \uD83D\uDE15 ");
-                break;
+                    System.out.println("Invalid choice! \uD83D\uDEAB");
             }
         }
     }

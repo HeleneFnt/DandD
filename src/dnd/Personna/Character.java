@@ -16,7 +16,7 @@ public abstract class Character {
     // Constructeur de personnages sans paramètres
     public Character() {
         this.name = "";
-        this.healthPoints=10; // Valeur par défaut
+        this.healthPoints = 10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
     }
 
@@ -57,13 +57,35 @@ public abstract class Character {
         return attackStrength;
     }
 
+    public OffensiveStuff getOffensiveStuff() {
+        return offensiveStuff;
+    }
+
+    public void setOffensiveStuff(OffensiveStuff offensiveStuff) {
+        this.offensiveStuff = offensiveStuff;
+    }
+
+    public DefensiveStuff getDefensiveStuff() {
+        return defensiveStuff;
+    }
+
+    public void setDefensiveStuff(DefensiveStuff defensiveStuff) {
+        this.defensiveStuff = defensiveStuff;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public abstract String scream();
 
     public String interaction() {
         return null;
     }
-
 
     // Méthode pour l'utilisation de la potion de vie
     public void heal(int amount) {
@@ -76,14 +98,5 @@ public abstract class Character {
             this.healthPoints = 0;
         }
     }
-
-public int getPosition() {
-        return position;
-    }
-
-public void setPosition(int position) {
-        this.position = position;
-    }
-
 
 }

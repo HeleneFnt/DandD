@@ -11,7 +11,7 @@ public class Warrior extends Character {
     }
 
     public String scream() {
-        return "Waaah !!";
+        return "For honor and glory!";
     }
 
 //    public void useGreatHealthPotion() {

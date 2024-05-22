@@ -14,7 +14,7 @@ public class Mage extends Character {
     }
 
     public String scream() {
-        return "Youhou ! ";
+        return "I invoke the power of magic!";
     }
 
 //    public void useGreatHealthPotion() {

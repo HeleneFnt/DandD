@@ -27,4 +27,5 @@ public class Lightning extends Spell implements Case {
     public String interaction(Character character, GameDialog dialog) {
         return "";
     }
+
 }

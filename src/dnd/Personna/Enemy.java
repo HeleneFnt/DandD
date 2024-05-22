@@ -126,4 +126,8 @@ public abstract class Enemy implements Case {
 
         return null;
     }
+
+    public int getHealthPoints() {
+        return lifePoints;
+    }
 }

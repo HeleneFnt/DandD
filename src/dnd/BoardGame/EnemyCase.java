@@ -21,7 +21,4 @@ public abstract class EnemyCase implements Case {
         return "You encountered an enemy!";
     }
 
-    public int getPosition() {
-        return position;
-    }
 }
