@@ -1,8 +1,9 @@
 package dnd.boardGame;
 
+import dnd.personna.Dragon;
 import dnd.personna.Gobelin;
 import dnd.personna.Wizard;
-import dnd.personna.Dragon;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

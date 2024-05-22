@@ -3,6 +3,7 @@ package dnd.boardGame;
 import dnd.GameDialog;
 import dnd.personna.Character;
 
+
 public class StandardHealthPotion implements Case {
     private int position;
     private String description;

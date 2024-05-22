@@ -1,13 +1,13 @@
 package dnd;
 
 import dnd.boardGame.*;
-import dnd.personna.Character;
 import dnd.personna.CharacterBeyondBoardException;
 import dnd.personna.Enemy;
-import java.util.HashSet;
-import java.util.Set;
+import dnd.personna.Character;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Game {
     private final GameDialog dialog;

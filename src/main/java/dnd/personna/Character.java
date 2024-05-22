@@ -1,7 +1,7 @@
 package dnd.personna;
 
-import dnd.stuff.OffensiveStuff;
 import dnd.stuff.DefensiveStuff;
+import dnd.stuff.OffensiveStuff;
 
 public abstract class Character {
 

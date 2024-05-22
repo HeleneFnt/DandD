@@ -1,11 +1,10 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
 import dnd.personna.Mage;
 import dnd.personna.Warrior;
 import dnd.stuff.*;
-
+import dnd.personna.Character;
 import java.util.Random;
 
 public class BonusWeaponCase implements Case {

@@ -1,6 +1,7 @@
 package dnd.personna;
 
 import dnd.stuff.OffensiveStuff;
+import dnd.personna.Character;
 
 public class Warrior extends Character {
 

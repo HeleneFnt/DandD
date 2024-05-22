@@ -1,8 +1,9 @@
 package dnd.stuff;
 
-import dnd.boardGame.Case;
 import dnd.GameDialog;
+import dnd.boardGame.Case;
 import dnd.personna.Character;
+
 
 public class Lightning extends Spell implements Case {
     public Lightning() {

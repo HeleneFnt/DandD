@@ -1,9 +1,9 @@
 package dnd;
 
 import dnd.boardGame.Board;
-import dnd.personna.Character;
 import dnd.personna.Mage;
 import dnd.personna.Warrior;
+import dnd.personna.Character;
 
 import java.util.Scanner;
 

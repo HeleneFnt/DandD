@@ -1,9 +1,10 @@
 package dnd.personna;
 
-import dnd.boardGame.Case;
 import dnd.GameDialog;
+import dnd.boardGame.Case;
 import dnd.stuff.OffensiveStuff;
 import dnd.stuff.Spell;
+import dnd.personna.Character;
 
 public abstract class Enemy implements Case {
     protected String type;

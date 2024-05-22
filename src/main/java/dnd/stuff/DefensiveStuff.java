@@ -1,7 +1,6 @@
 package dnd.stuff;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
 
 public abstract class DefensiveStuff {
     protected String type;
