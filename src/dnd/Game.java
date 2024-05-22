@@ -1,9 +1,9 @@
 package dnd;
 
-import dnd.BoardGame.*;
-import dnd.Personna.Character;
-import dnd.Personna.CharacterBeyondBoardException;
-import dnd.Personna.Enemy;
+import dnd.boardGame.*;
+import dnd.personna.Character;
+import dnd.personna.CharacterBeyondBoardException;
+import dnd.personna.Enemy;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.ArrayList;
@@ -45,10 +45,8 @@ public class Game {
             System.out.println("You rolled a " + diceRoll + "!");
 
             int newPosition = currentPosition + diceRoll;
-            if (newPosition > FINAL_CASE) {
-                newPosition = FINAL_CASE;
-            }
 
+            // Vérifier si le nouveau position dépasse la case finale
             if (newPosition > FINAL_CASE) {
                 try {
                     throw new CharacterBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
@@ -59,6 +57,11 @@ public class Game {
             }
 
             currentPosition = newPosition;
+            if (currentPosition == FINAL_CASE && hero.getHealthPoints() > 0) {
+                System.out.println("Congratulations! You have reached the final case and won the game! \uD83C\uDFC6");
+                break;
+            }
+
             while (true) {
                 Case currentCase = getCurrentCase();
                 if (currentCase != null) {
@@ -110,5 +113,4 @@ public class Game {
                 System.out.println("Invalid choice! \uD83D\uDEAB");
         }
     }
-
 }
