@@ -15,10 +15,9 @@ public class HeroData {
 
     // Méthode pour obtenir une connexion à la base de données
     private static Connection getConnection() throws Exception {
-        String url = "jdbc:mysql://localhost:3306/DungeonsAndDragons";
+        String url = "jdbc:mariadb://localhost:3306/DungeonsAndDragons";
         String user = "HeleneFnt";
         String password = "6cp6pgk";
-        Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(url, user, password);
     }
     // Méthode pour récupérer la liste des héros
@@ -31,19 +30,19 @@ public class HeroData {
             while (resultSet.next()) {
                 String type = resultSet.getString("Type");
                 String name = resultSet.getString("Name");
-                int healthPoints = resultSet.getInt("HealthPoints");
+                int healthPoints = resultSet.getInt("HealthPoint");
                 int attackStrength = resultSet.getInt("AttackStrength");
 
                 OffensiveStuff offensiveStuff = null;
                 DefensiveStuff defensiveStuff = null;
 
                 Hero hero;
-                if (type.equalsIgnoreCase("Magicien")) {
+                if (type.equalsIgnoreCase("Mage")) {
                     hero = new Mage(name);
-                } else if (type.equalsIgnoreCase("Guerrier")) {
+                } else if (type.equalsIgnoreCase("Warrior")) {
                     hero = new Warrior(name);
                 } else {
-                    continue; // Si le type n'est pas reconnu, passer à l'enregistrement suivant
+                    continue;
                 }
 
                 hero.setHealthPoints(healthPoints);
