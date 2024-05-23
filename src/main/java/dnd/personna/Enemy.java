@@ -34,37 +34,16 @@ public abstract class Enemy implements Case {
         this.name = name;
     }
 
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
-//
-//    public int getLifePoints() {
-//        return lifePoints;
-//    }
-//
-//    public void setLifePoints(int lifePoints) {
-//        this.lifePoints = lifePoints;
-//    }
-//
-//    public int getDamage() {
-//        return damage;
-//    }
-//
-//    public void setDamage(int damage) {
-//        this.damage = damage;
-//    }
 
     @Override
     public int getPosition() {
+
         return position;
     }
 
     @Override
     public String getDescription() {
+
         return "Enemy case";
     }
 
@@ -126,8 +105,5 @@ public abstract class Enemy implements Case {
 
         return null;
     }
-//
-//    public int getHealthPoints() {
-//        return lifePoints;
-//    }
+
 }

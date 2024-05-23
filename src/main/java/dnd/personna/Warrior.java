@@ -5,7 +5,7 @@ import dnd.stuff.OffensiveStuff;
 public class Warrior extends Hero {
 
     public Warrior(String name) {
-        super(name, "warrior");
+        super(name, "Warrior");
         this.healthPoints = 11;
         this.attackStrength = 6;
     }

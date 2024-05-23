@@ -5,7 +5,7 @@ import dnd.stuff.OffensiveStuff;
 public class Mage extends Hero {
 
     public Mage(String name) {
-        super(name, "mage");
+        super(name, "Mage");
         this.healthPoints =  7;
         this.attackStrength = 12;
     }

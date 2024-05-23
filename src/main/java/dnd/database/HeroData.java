@@ -20,6 +20,7 @@ public class HeroData {
         String password = "6cp6pgk";
         return DriverManager.getConnection(url, user, password);
     }
+
     // Méthode pour récupérer la liste des héros
     public static List<Hero> getHeroes() {
         List<Hero> heroes = new ArrayList<>();
@@ -67,6 +68,34 @@ public class HeroData {
             System.out.println("OffensiveStuff: " + (hero.getOffensiveStuff() != null ? hero.getOffensiveStuff().getName() : "None"));
             System.out.println("DefensiveStuff: " + (hero.getDefensiveStuff() != null ? hero.getDefensiveStuff().getName() : "None"));
             System.out.println();
+        }
+    }
+
+    //Méthode pour ajouter un héros à la base de données
+    public static void createHero(Hero hero) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO Hero (Type, Name, HealthPoint, AttackStrength) VALUES (?, ?, ?, ?)")) {
+            statement.setString(1, hero.getType());
+            statement.setString(2, hero.getName());
+            statement.setInt(3, hero.getHealthPoints());
+            statement.setInt(4, hero.getAttackStrength());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void editHero(Hero hero, int idPlayer) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE Hero SET Name = ?, Type = ?, HealthPoint = ?, AttackStrength = ? WHERE id = ?")) {
+            statement.setString(1, hero.getName());
+            statement.setString(2, hero.getType());
+            statement.setInt(3, hero.getHealthPoints());
+            statement.setInt(4, hero.getAttackStrength());
+            statement.setInt(5, idPlayer);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
