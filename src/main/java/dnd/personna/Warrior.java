@@ -1,14 +1,13 @@
 package dnd.personna;
 
 import dnd.stuff.OffensiveStuff;
-import dnd.personna.Character;
 
-public class Warrior extends Character {
+public class Warrior extends Hero {
 
     public Warrior(String name) {
         super(name, "warrior");
-        this.healthPoints = (int) (Math.random() * (11 - 4) + 5);
-        this.attackStrength = (int) (Math.random() * (11 - 4) + 5);
+        this.healthPoints = 11;
+        this.attackStrength = 6;
     }
 
     public String scream() {

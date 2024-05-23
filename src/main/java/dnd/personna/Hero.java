@@ -3,7 +3,7 @@ package dnd.personna;
 import dnd.stuff.DefensiveStuff;
 import dnd.stuff.OffensiveStuff;
 
-public abstract class Character {
+public abstract class Hero {
 
     protected String type;
     protected String name;
@@ -14,20 +14,20 @@ public abstract class Character {
     protected int position;
 
     // Constructeur de personnages sans paramètres
-    public Character() {
+    public Hero() {
         this.name = "";
         this.healthPoints = 10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
     }
 
     // Constructeur de personnages avec nom
-    public Character(String name) {
+    public Hero(String name) {
         this();
         this.name = name;
     }
 
     // Constructeur de personnages avec nom et type
-    public Character(String name, String type) {
+    public Hero(String name, String type) {
         this(name);
         this.type = type;
     }
@@ -53,25 +53,17 @@ public abstract class Character {
         return healthPoints;
     }
 
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
     public int getAttackStrength() {
         return attackStrength;
     }
 
-//    public OffensiveStuff getOffensiveStuff() {
-//        return offensiveStuff;
-//    }
-//
-//    public void setOffensiveStuff(OffensiveStuff offensiveStuff) {
-//        this.offensiveStuff = offensiveStuff;
-//    }
-//
-//    public DefensiveStuff getDefensiveStuff() {
-//        return defensiveStuff;
-//    }
-//
-//    public void setDefensiveStuff(DefensiveStuff defensiveStuff) {
-//        this.defensiveStuff = defensiveStuff;
-//    }
+    public void setAttackStrength(int attackStrength) {
+        this.attackStrength = attackStrength;
+    }
 
     public int getPosition() {
         return position;
@@ -79,6 +71,22 @@ public abstract class Character {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public OffensiveStuff getOffensiveStuff() {
+        return offensiveStuff;
+    }
+
+    public void setOffensiveStuff(OffensiveStuff offensiveStuff) {
+        this.offensiveStuff = offensiveStuff;
+    }
+
+    public DefensiveStuff getDefensiveStuff() {
+        return defensiveStuff;
+    }
+
+    public void setDefensiveStuff(DefensiveStuff defensiveStuff) {
+        this.defensiveStuff = defensiveStuff;
     }
 
     public abstract String scream();
@@ -98,5 +106,4 @@ public abstract class Character {
             this.healthPoints = 0;
         }
     }
-
 }

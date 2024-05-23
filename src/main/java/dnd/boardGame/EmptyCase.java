@@ -1,7 +1,7 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 public class EmptyCase implements Case {
     private int position;
@@ -22,7 +22,7 @@ public class EmptyCase implements Case {
         return position;
     }
     @Override
-    public String interaction(Character character , GameDialog dialog) {
+    public String interaction(Hero hero, GameDialog dialog) {
         return "Nothing really happens...";
     }
 

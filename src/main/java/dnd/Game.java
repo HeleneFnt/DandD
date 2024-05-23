@@ -3,7 +3,7 @@ package dnd;
 import dnd.boardGame.*;
 import dnd.personna.CharacterBeyondBoardException;
 import dnd.personna.Enemy;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -11,13 +11,13 @@ import java.util.Set;
 
 public class Game {
     private final GameDialog dialog;
-    private final Character hero;
+    private final Hero hero;
     private final Board board;
     protected int currentPosition; // Pour suivre la position actuelle du joueur sur le plateau
     private final int FINAL_CASE = 62;
     private final Set<Integer> defeatedEnemies = new HashSet<>(); // Positions des ennemis vaincus
 
-    public Game(GameDialog dialog, Character hero, Board board) {
+    public Game(GameDialog dialog, Hero hero, Board board) {
         this.dialog = dialog;
         this.hero = hero;
         this.currentPosition = 1; // Départ du joueur à la case 1

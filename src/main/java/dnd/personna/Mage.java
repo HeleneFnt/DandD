@@ -2,12 +2,12 @@ package dnd.personna;
 
 import dnd.stuff.OffensiveStuff;
 
-public class Mage extends Character {
+public class Mage extends Hero {
 
     public Mage(String name) {
         super(name, "mage");
-        this.healthPoints = (int) (Math.random() * (7 - 3)) + 3;
-        this.attackStrength = (int) (Math.random() * (16 - 8)) + 8;
+        this.healthPoints =  7;
+        this.attackStrength = 12;
     }
 
     public String scream() {

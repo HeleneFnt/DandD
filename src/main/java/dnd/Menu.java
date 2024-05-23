@@ -3,13 +3,13 @@ package dnd;
 import dnd.boardGame.Board;
 import dnd.personna.Mage;
 import dnd.personna.Warrior;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 import java.util.Scanner;
 
 public class Menu {
     private final Scanner scanner = new Scanner(System.in);
-    private Character fictionalCharacter = null;
+    private Hero fictionalHero = null;
     private final Color color = new Color();
     private final Color.Colors colors = color.new Colors();
     private String randomColor;
@@ -66,14 +66,14 @@ public class Menu {
             }
 
             if (type.equals("mage")) {
-                fictionalCharacter = new Mage(name);
+                fictionalHero = new Mage(name);
             } else {
-                fictionalCharacter = new Warrior(name);
+                fictionalHero = new Warrior(name);
             }
 
-            if (fictionalCharacter != null) {
-                int healthPoints = fictionalCharacter.getHealthPoints();
-                int attackStrength = fictionalCharacter.getAttackStrength();
+            if (fictionalHero != null) {
+                int healthPoints = fictionalHero.getHealthPoints();
+                int attackStrength = fictionalHero.getAttackStrength();
             } else {
                 System.out.println("Error creating character. Please try again.");
                 continue;
@@ -81,16 +81,16 @@ public class Menu {
 
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
             System.out.println(colors.colored(randomColor, "Your informations:"));
-            displayCharacterSpecifics(fictionalCharacter);
+            displayCharacterSpecifics(fictionalHero);
 
             System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Do you want to start the game now? 'y' for Yes or 'n' for No.");
             String choice = scanner.nextLine();
             switch (choice.toLowerCase()) {
                 case "y":
                     System.out.println("Starting the game... First throw \uD83C\uDFB2");
-                    System.out.println(fictionalCharacter.scream());
+                    System.out.println(fictionalHero.scream());
                     Board board = new Board() ;
-                    new Game(dialog, fictionalCharacter, board).playTurn(); // Appeler la méthode pour démarrer le jeu
+                    new Game(dialog, fictionalHero, board).playTurn(); // Appeler la méthode pour démarrer le jeu
                     break;
                 case "n":
                     System.out.println("You can start the game later");
@@ -104,23 +104,23 @@ public class Menu {
             if (modifyChoice.equals("y")) {
                 modifyCharacter();
             } else if (modifyChoice.equals("n")) {
-                System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk \uD83D\uDEAA✨ " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType() + "!" + "The game is starting..."));
+                System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk \uD83D\uDEAA✨ " + fictionalHero.getName() + ", Type: " + fictionalHero.getType() + "!" + "The game is starting..."));
                 System.out.println(colors.colored(randomColor, "Your informations:"));
-                displayCharacterSpecifics(fictionalCharacter);
+                displayCharacterSpecifics(fictionalHero);
                 break;
             } else {
                 System.out.println("Invalid choice! \uD83D\uDEAB ");
             }
         }
     }
-    private void displayCharacterSpecifics(Character character) {
-        if (character instanceof Mage) {
-            Mage mage = (Mage) character;
+    private void displayCharacterSpecifics(Hero hero) {
+        if (hero instanceof Mage) {
+            Mage mage = (Mage) hero;
             System.out.println("Your are a famous mage named " + mage.getName() +"!");
             System.out.println("Health Points: " + mage.getHealthPoints());
             System.out.println("Attack Strength: " + mage.getAttackStrength());
-        } else if (character instanceof Warrior) {
-            Warrior warrior = (Warrior) character;
+        } else if (hero instanceof Warrior) {
+            Warrior warrior = (Warrior) hero;
             System.out.println("Your are the dangerous warrior \uD83E\uDD77\uD83C\uDFFB  named " + warrior.getName() +"!");
             System.out.println("Warrior Health Points: " + warrior.getHealthPoints());
             System.out.println("Warrior Attack Strength: " + warrior.getAttackStrength());
@@ -141,10 +141,10 @@ public class Menu {
                 case 1:
                     System.out.println("Enter new name: ");
                     String newName = scanner.nextLine();
-                    fictionalCharacter.setName(newName);
+                    fictionalHero.setName(newName);
                     System.out.println(colors.colored(randomColor, "Character name updated successfully! \uD83D\uDCAB "));
                     System.out.println(colors.colored(randomColor, "Your informations:"));
-                    displayCharacterSpecifics(fictionalCharacter);
+                    displayCharacterSpecifics(fictionalHero);
                     break;
                 case 2:
                     System.out.println("Enter new type, 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' \uD83E\uDD77\uD83C\uDFFB ...: ");
@@ -152,18 +152,18 @@ public class Menu {
                     if (!newType.equals("mage") && !newType.equals("warrior")) {
                         System.out.println("Invalid type! Please choose between 'mage'\uD83E\uDDD9\u200D♀\uFE0F or 'warrior'\uD83E\uDD77\uD83C\uDFFB.");
                     } else {
-                        fictionalCharacter.setType(newType);
+                        fictionalHero.setType(newType);
                         System.out.println(colors.colored(randomColor, "Character type updated successfully! \uD83D\uDCAB "));
                         System.out.println(colors.colored(randomColor, "Your informations:"));
-                        displayCharacterSpecifics(fictionalCharacter);
+                        displayCharacterSpecifics(fictionalHero);
                     }
                     break;
                 case 3:
-                    System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalCharacter.getName() + ", Type: " + fictionalCharacter.getType()));
+                    System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalHero.getName() + ", Type: " + fictionalHero.getType()));
                     System.out.println(colors.colored(randomColor, "Your informations:"));
-                    displayCharacterSpecifics(fictionalCharacter);
+                    displayCharacterSpecifics(fictionalHero);
                     Board board = new Board();
-                    new Game(dialog, fictionalCharacter, board).playTurn(); // Commencer le jeu
+                    new Game(dialog, fictionalHero, board).playTurn(); // Commencer le jeu
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye! \uD83D\uDC4B");
@@ -172,7 +172,7 @@ public class Menu {
                     System.out.println("Invalid choice! \uD83D\uDEAB ");
             }
 
-            if (fictionalCharacter.getType() == null || fictionalCharacter.getName() == null) {
+            if (fictionalHero.getType() == null || fictionalHero.getName() == null) {
                 System.out.println("Invalid character \uD83D\uDEAB ! Please ensure that both type and name are set. \uD83D\uDE15 ");
                 break;
             }

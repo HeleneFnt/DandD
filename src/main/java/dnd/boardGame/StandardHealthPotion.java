@@ -1,7 +1,7 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 
 public class StandardHealthPotion implements Case {
@@ -24,9 +24,9 @@ public class StandardHealthPotion implements Case {
     }
 
     @Override
-    public String interaction(Character character, GameDialog dialog) {
-        int previousHealth = character.getHealthPoints(); // Obtenez les points de vie avant la guérison
-        character.heal(healingAmount); // Guérissez le personnage
+    public String interaction(Hero hero, GameDialog dialog) {
+        int previousHealth = hero.getHealthPoints(); // Obtenez les points de vie avant la guérison
+        hero.heal(healingAmount); // Guérissez le personnage
         int totalHealth = previousHealth + healingAmount; // Obtenez les points de vie après la guérison
 
         // Construisez le message en utilisant les points de vie restaurés et totaux

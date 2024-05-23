@@ -4,7 +4,6 @@ import dnd.GameDialog;
 import dnd.boardGame.Case;
 import dnd.stuff.OffensiveStuff;
 import dnd.stuff.Spell;
-import dnd.personna.Character;
 
 public abstract class Enemy implements Case {
     protected String type;
@@ -70,11 +69,11 @@ public abstract class Enemy implements Case {
     }
 
     @Override
-    public String interaction(Character character, GameDialog dialog) {
-        dialog.notifyPlayerInfo(character.getName(), character.getHealthPoints(), character.getAttackStrength());
+    public String interaction(Hero hero, GameDialog dialog) {
+        dialog.notifyPlayerInfo(hero.getName(), hero.getHealthPoints(), hero.getAttackStrength());
         dialog.notifyEnemyInfo(name, lifePoints, damage);
 
-        while (lifePoints > 0 && character.getHealthPoints() > 0) {
+        while (lifePoints > 0 && hero.getHealthPoints() > 0) {
             // Demander le choix du joueur : attaquer ou fuir
             String choice = dialog.askForChoice();
 
@@ -84,18 +83,18 @@ public abstract class Enemy implements Case {
                 return "Flee";  // Indiquer que le joueur a choisi de fuir
             } else if (choice.equalsIgnoreCase("A")) {
                 // Attaque du héros
-                int baseAttackStrength = character.getAttackStrength();
+                int baseAttackStrength = hero.getAttackStrength();
                 int bonusAttackStrength = 0;
                 String bonusSource = "";
 
-                if (character instanceof Warrior) {
-                    Warrior warrior = (Warrior) character;
+                if (hero instanceof Warrior) {
+                    Warrior warrior = (Warrior) hero;
                     if (warrior.getWeapon() != null) {
                         bonusAttackStrength = warrior.getWeapon().getAttackStrength();
                         bonusSource = warrior.getWeapon().getName();
                     }
-                } else if (character instanceof Mage) {
-                    Mage mage = (Mage) character;
+                } else if (hero instanceof Mage) {
+                    Mage mage = (Mage) hero;
                     OffensiveStuff learnedSpell = mage.learnSpell(new Spell());
                     if (learnedSpell != null) {
                         bonusAttackStrength = learnedSpell.getAttackStrength();
@@ -105,19 +104,19 @@ public abstract class Enemy implements Case {
 
                 int totalAttackStrength = baseAttackStrength + bonusAttackStrength;
 
-                dialog.notifyHeroAttack(character.getName(), name, totalAttackStrength, bonusSource);
+                dialog.notifyHeroAttack(hero.getName(), name, totalAttackStrength, bonusSource);
                 lifePoints -= totalAttackStrength;
                 dialog.notifyEnemyLifePoints(lifePoints, name);
 
                 if (lifePoints <= 0) {
-                    return name + " is defeated! Remaining health: " + character.getHealthPoints();
+                    return name + " is defeated! Remaining health: " + hero.getHealthPoints();
                 }
 
                 dialog.notifyEnemyAttack(name, damage);
-                character.reduceLifePoints(damage);
-                dialog.notifyRemainingHealth(character.getHealthPoints());
+                hero.reduceLifePoints(damage);
+                dialog.notifyRemainingHealth(hero.getHealthPoints());
 
-                if (character.getHealthPoints() <= 0) {
+                if (hero.getHealthPoints() <= 0) {
                     return "You're dead!";
                 }
             } else {

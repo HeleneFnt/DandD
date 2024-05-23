@@ -4,7 +4,7 @@ import dnd.GameDialog;
 import dnd.personna.Mage;
 import dnd.personna.Warrior;
 import dnd.stuff.*;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 import java.util.Random;
 
 public class BonusWeaponCase implements Case {
@@ -25,14 +25,14 @@ public class BonusWeaponCase implements Case {
     }
 
     @Override
-    public String interaction(Character character, GameDialog dialog) {
+    public String interaction(Hero hero, GameDialog dialog) {
         Random random = new Random();
         int bonusType = random.nextInt(2);
 
-        if (bonusType == 0 && character instanceof Warrior) {
-            return applyWeaponBonus((Warrior) character, dialog);
-        } else if (bonusType == 1 && character instanceof Mage) {
-            return applySpellBonus((Mage) character, dialog);
+        if (bonusType == 0 && hero instanceof Warrior) {
+            return applyWeaponBonus((Warrior) hero, dialog);
+        } else if (bonusType == 1 && hero instanceof Mage) {
+            return applySpellBonus((Mage) hero, dialog);
         } else {
             return "No bonus applied.";
         }

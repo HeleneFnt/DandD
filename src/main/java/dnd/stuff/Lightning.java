@@ -2,7 +2,7 @@ package dnd.stuff;
 
 import dnd.GameDialog;
 import dnd.boardGame.Case;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 
 public class Lightning extends Spell implements Case {
@@ -25,7 +25,7 @@ public class Lightning extends Spell implements Case {
     }
 
     @Override
-    public String interaction(Character character, GameDialog dialog) {
+    public String interaction(Hero hero, GameDialog dialog) {
         return "";
     }
 

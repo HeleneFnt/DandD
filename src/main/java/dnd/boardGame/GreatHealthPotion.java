@@ -1,7 +1,7 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 public class GreatHealthPotion implements Case {
     private int position;
@@ -23,8 +23,8 @@ public class GreatHealthPotion implements Case {
     }
 
     @Override
-    public String interaction(Character character, GameDialog dialog) {
-        character.heal(healingAmount);
+    public String interaction(Hero hero, GameDialog dialog) {
+        hero.heal(healingAmount);
         return "You found a Great Health Potion and restored " + healingAmount + " health points!";
     }
 

@@ -1,10 +1,10 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 public interface Case {
     int getPosition();
     String getDescription();
-    String interaction(Character character, GameDialog dialog);
+    String interaction(Hero hero, GameDialog dialog);
 }

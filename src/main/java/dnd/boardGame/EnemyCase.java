@@ -1,7 +1,7 @@
 package dnd.boardGame;
 
 import dnd.GameDialog;
-import dnd.personna.Character;
+import dnd.personna.Hero;
 
 public abstract class EnemyCase implements Case {
     private int position;
@@ -17,7 +17,7 @@ public abstract class EnemyCase implements Case {
     }
 
     @Override
-    public String interaction(Character character , GameDialog dialog) {
+    public String interaction(Hero hero, GameDialog dialog) {
         return "You encountered an enemy!";
     }
 
