@@ -2,6 +2,7 @@ package dnd.personna;
 
 import dnd.GameDialog;
 import dnd.boardGame.Case;
+import dnd.database.HeroData;
 import dnd.stuff.OffensiveStuff;
 import dnd.stuff.Spell;
 
@@ -46,7 +47,6 @@ public abstract class Enemy implements Case {
 
         return "Enemy case";
     }
-
     @Override
     public String interaction(Hero hero, GameDialog dialog) {
         dialog.notifyPlayerInfo(hero.getName(), hero.getHealthPoints(), hero.getAttackStrength());
@@ -58,7 +58,6 @@ public abstract class Enemy implements Case {
 
             if (choice.equalsIgnoreCase("F")) {
                 // Fuir
-
                 return "Flee";  // Indiquer que le joueur a choisi de fuir
             } else if (choice.equalsIgnoreCase("A")) {
                 // Attaque du héros
@@ -95,6 +94,9 @@ public abstract class Enemy implements Case {
                 hero.reduceLifePoints(damage);
                 dialog.notifyRemainingHealth(hero.getHealthPoints());
 
+                // Mettre à jour les points de vie du héros dans la base de données
+                HeroData.HeroData.changeLifePoints(hero, hero.getHealthPoints());
+
                 if (hero.getHealthPoints() <= 0) {
                     return "You're dead!";
                 }
@@ -105,5 +107,6 @@ public abstract class Enemy implements Case {
 
         return null;
     }
-
 }
+
+

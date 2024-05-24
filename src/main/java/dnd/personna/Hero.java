@@ -5,6 +5,8 @@ import dnd.stuff.OffensiveStuff;
 
 public abstract class Hero {
 
+    private int id;  // Ajout du champ id
+    private static int nextId = 1; // Ajout du champ nextId
     protected String type;
     protected String name;
     protected int healthPoints;
@@ -15,6 +17,7 @@ public abstract class Hero {
 
     // Constructeur de personnages sans paramètres
     public Hero() {
+        this.id = nextId++;
         this.name = "";
         this.healthPoints = 10; // Valeur par défaut
         this.attackStrength = 10; // Valeur par défaut
@@ -32,7 +35,27 @@ public abstract class Hero {
         this.type = type;
     }
 
+    // Constructeur de personnages avec id, nom et type
+    public Hero(int id, String name, String type) {
+        this(name, type);
+        this.id = id;
+    }
+
+    // Constructeur avec ID spécifié
+    public Hero(int id) {
+        this.id = id;
+
+    }
+
     // Getters et Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -95,7 +118,6 @@ public abstract class Hero {
         return null;
     }
 
-    // Méthode pour l'utilisation de la potion de vie
     public void heal(int amount) {
         this.healthPoints += amount;
     }

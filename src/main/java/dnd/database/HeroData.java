@@ -13,6 +13,8 @@ import java.util.List;
 
 public class HeroData {
 
+    public static dnd.database.HeroData HeroData;
+
     // Méthode pour obtenir une connexion à la base de données
     private static Connection getConnection() throws Exception {
         String url = "jdbc:mariadb://localhost:3306/DungeonsAndDragons";
@@ -72,7 +74,7 @@ public class HeroData {
     }
 
     //Méthode pour ajouter un héros à la base de données
-    public static void createHero(Hero hero) {
+    public static int createHero(Hero hero) {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement("INSERT INTO Hero (Type, Name, HealthPoint, AttackStrength) VALUES (?, ?, ?, ?)")) {
             statement.setString(1, hero.getType());
@@ -83,6 +85,7 @@ public class HeroData {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public static void editHero(Hero hero, int idPlayer) {
@@ -98,4 +101,24 @@ public class HeroData {
             e.printStackTrace();
         }
     }
+
+    public static void changeLifePoints(Hero hero, int newLifePoints) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE Hero SET HealthPoint = ? WHERE id = ?")) {
+            statement.setInt(1, newLifePoints);
+            statement.setInt(2, hero.getId()); // Utiliser l'ID du héros pour identifier l'enregistrement à mettre à jour
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Successfully updated health points for hero: " + hero.getName() +
+                        ". New health points: " + newLifePoints);
+            } else {
+                System.out.println("Failed to update health points for hero: " + hero.getName());
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while updating health points for hero: " + hero.getName());
+            e.printStackTrace();
+        }
+    }
+
 }

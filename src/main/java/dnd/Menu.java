@@ -115,13 +115,17 @@ public class Menu {
             }
 
             if (fictionalHero != null) {
-                int healthPoints = fictionalHero.getHealthPoints();
-                int attackStrength = fictionalHero.getAttackStrength();
-            } else {
-                System.out.println("Error creating character. Please try again.");
-                continue;
-            }
+                int generatedId = HeroData.createHero(fictionalHero);
 
+                if (generatedId != -1) {
+                    idPlayer = generatedId; // Mettre à jour l'ID du joueur
+                    int healthPoints = fictionalHero.getHealthPoints();
+                    int attackStrength = fictionalHero.getAttackStrength();
+                } else {
+                    System.out.println("Error creating character. Please try again.");
+                    continue;
+                }
+            }
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
             System.out.println(colors.colored(randomColor, "Your informations:"));
             displayCharacterSpecifics(fictionalHero);
