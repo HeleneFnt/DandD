@@ -1,7 +1,7 @@
 package dnd;
 
 import dnd.boardGame.*;
-import dnd.personna.CharacterBeyondBoardException;
+import dnd.personna.HeroBeyondBoardException;
 import dnd.personna.Enemy;
 import dnd.personna.Hero;
 import java.util.ArrayList;
@@ -49,8 +49,8 @@ public class Game {
             // Vérifier si le nouveau position dépasse la case finale
             if (newPosition > FINAL_CASE) {
                 try {
-                    throw new CharacterBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
-                } catch (CharacterBeyondBoardException e) {
+                    throw new HeroBeyondBoardException("Your character left the dungeon unexpectedly! \uD83E\uDEE1 ");
+                } catch (HeroBeyondBoardException e) {
                     System.out.println(e.getMessage());
                     return;
                 }

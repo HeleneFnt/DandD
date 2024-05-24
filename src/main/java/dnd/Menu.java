@@ -68,7 +68,7 @@ public class Menu {
             }
         fictionalHero = heroes.get(idPlayer - 1);
         System.out.println("Hero selected: " + fictionalHero.getName());
-        displayCharacterSpecifics(fictionalHero);
+        displayHeroSpecs(fictionalHero);
 
         System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Do you want to start the game now? 'y' for Yes or 'n' for No.");
         String startChoice = scanner.nextLine();
@@ -77,7 +77,7 @@ public class Menu {
             new Game(dialog, fictionalHero, board).playTurn();
         } else {
             System.out.println("You can start the game with another hero from the menu.");
-            modifyCharacter();
+            modifyHero();
         }
     }
 
@@ -128,7 +128,7 @@ public class Menu {
             }
             System.out.println(colors.colored(randomColor, "Character created successfully! \uD83D\uDCAB "));
             System.out.println(colors.colored(randomColor, "Your informations:"));
-            displayCharacterSpecifics(fictionalHero);
+            displayHeroSpecs(fictionalHero);
             HeroData.createHero(fictionalHero);
 
 
@@ -151,18 +151,18 @@ public class Menu {
             System.out.println("\uD83D\uDC68\u200D\uD83D\uDCBB Do you want to modify your hero \uD83D\uDD04 ? 'y' for Yes or 'n' for No.");
             String modifyChoice = scanner.nextLine();
             if (modifyChoice.equals("y")) {
-                modifyCharacter();
+                modifyHero();
             } else if (modifyChoice.equals("n")) {
                 System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk \uD83D\uDEAA✨ " + fictionalHero.getName() + ", Type: " + fictionalHero.getType() + "!" + "The game is starting..."));
                 System.out.println(colors.colored(randomColor, "Your informations:"));
-                displayCharacterSpecifics(fictionalHero);
+                displayHeroSpecs(fictionalHero);
                 break;
             } else {
                 System.out.println("Invalid choice! \uD83D\uDEAB ");
             }
         }
     }
-    private void displayCharacterSpecifics(Hero hero) {
+    private void displayHeroSpecs(Hero hero) {
         if (hero instanceof Mage) {
             Mage mage = (Mage) hero;
             System.out.println("Your are a famous mage named " + mage.getName() + "!");
@@ -177,7 +177,7 @@ public class Menu {
             System.out.println("The hero is not a Mage or a Warrior \uD83E\uDD77\uD83C\uDFFB.");
         }
     }
-    private void modifyCharacter() {
+    private void modifyHero() {
         System.out.println("Modifying character...");
         while (true) {
             System.out.println("Tape '1' to modify name \uD83D\uDD04");
@@ -194,7 +194,7 @@ public class Menu {
                     HeroData.editHero(fictionalHero, idPlayer);  // Sauvegarder la modification en base de données
                     System.out.println(colors.colored(randomColor, "Hero name updated successfully! \uD83D\uDCAB "));
                     System.out.println(colors.colored(randomColor, "Your informations:"));
-                    displayCharacterSpecifics(fictionalHero);
+                    displayHeroSpecs(fictionalHero);
                     break;
                 case 2:
                     System.out.println("Enter new type, 'mage' \uD83E\uDDD9\u200D♀\uFE0F or 'warrior' \uD83E\uDD77\uD83C\uDFFB ...: ");
@@ -206,13 +206,13 @@ public class Menu {
                         HeroData.editHero(fictionalHero, idPlayer);  // Sauvegarder la modification en base de données
                         System.out.println(colors.colored(randomColor, "Hero type updated successfully! \uD83D\uDCAB "));
                         System.out.println(colors.colored(randomColor, "Your informations:"));
-                        displayCharacterSpecifics(fictionalHero);
+                        displayHeroSpecs(fictionalHero);
                     }
                     break;
                 case 3:
                     System.out.println(colors.colored(randomColor, "Welcome to the Dungeon of Naheulbeuk: " + fictionalHero.getName() + ", Type: " + fictionalHero.getType()));
                     System.out.println(colors.colored(randomColor, "Hero's informations:"));
-                    displayCharacterSpecifics(fictionalHero);
+                    displayHeroSpecs(fictionalHero);
                     Board board = new Board();
                     new Game(dialog, fictionalHero, board).playTurn(); // Commencer le jeu
                     return; // Sortir de la boucle et de la méthode

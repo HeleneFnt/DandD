@@ -9,6 +9,9 @@ public class Mage extends Hero {
         this.healthPoints =  7;
         this.attackStrength = 12;
     }
+    public OffensiveStuff getSpell() {
+        return offensiveStuff;
+    }
 
     public String scream() {
         return "I invoke the power of magic!";
@@ -18,10 +21,5 @@ public class Mage extends Hero {
         this.offensiveStuff = spell;
         return spell;
     }
-
-    public OffensiveStuff getSpell() {
-        return offensiveStuff;
-    }
-
 
 }
